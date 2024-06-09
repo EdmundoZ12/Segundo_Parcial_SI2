@@ -1,6 +1,7 @@
 package com.backend.backend.Carrera;
 
 import com.backend.backend.Carrera.DTO.DTO_Carrera;
+import com.backend.backend.Carrera.DTO.DTO_Carrera_Response;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,8 +33,8 @@ public class Carrera_Controller {
     }
 
     @GetMapping
-    public ResponseEntity<List<Carrera>> getAllCarreras() {
-        List<Carrera> carreras = carreraService.getAllCarreras();
+    public ResponseEntity<List<DTO_Carrera_Response>> getAllCarreras() {
+        List<DTO_Carrera_Response> carreras = carreraService.getAllCarreras();
         return ResponseEntity.ok(carreras);
     }
 
