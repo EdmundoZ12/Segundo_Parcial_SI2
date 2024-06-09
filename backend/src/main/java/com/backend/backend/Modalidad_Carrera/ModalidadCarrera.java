@@ -1,14 +1,17 @@
 package com.backend.backend.Modalidad_Carrera;
 
 import com.backend.backend.Carrera.Carrera;
+import com.backend.backend.GestionCarrera.GestionCarrera;
 import com.backend.backend.Modalidad.Modalidad;
 import com.backend.backend.Tipo_Carrera.TipoCarrera;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -37,4 +40,8 @@ public class ModalidadCarrera {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tcarrera", nullable = false)
     private TipoCarrera tipoCarrera;
+
+    @OneToMany(mappedBy = "modalidadCarrera")
+    private List<GestionCarrera> gestionCarreras = new ArrayList<>();
+
 }
