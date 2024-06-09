@@ -1,4 +1,4 @@
-package com.backend.backend.GestionCarrera;
+package com.backend.backend.Gestion_Carrera;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

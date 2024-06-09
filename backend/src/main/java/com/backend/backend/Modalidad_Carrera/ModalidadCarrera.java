@@ -1,7 +1,7 @@
 package com.backend.backend.Modalidad_Carrera;
 
 import com.backend.backend.Carrera.Carrera;
-import com.backend.backend.GestionCarrera.GestionCarrera;
+import com.backend.backend.Gestion_Carrera.GestionCarrera;
 import com.backend.backend.Modalidad.Modalidad;
 import com.backend.backend.Tipo_Carrera.TipoCarrera;
 import jakarta.persistence.*;

@@ -1,5 +1,6 @@
 package com.backend.backend.Carrera;
 
+import com.backend.backend.Carrera_Materia.CarreraMateria;
 import com.backend.backend.Modalidad.Modalidad;
 import com.backend.backend.Modalidad_Carrera.ModalidadCarrera;
 import jakarta.persistence.*;
@@ -27,5 +28,8 @@ public class Carrera {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "carrera")
     private List<ModalidadCarrera> modalidadCarreras = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "carrera")
+    private List<CarreraMateria> carreraMaterias = new ArrayList<>();
 
 }

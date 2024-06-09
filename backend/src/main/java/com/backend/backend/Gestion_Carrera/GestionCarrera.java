@@ -1,4 +1,4 @@
-package com.backend.backend.GestionCarrera;
+package com.backend.backend.Gestion_Carrera;
 
 import com.backend.backend.Gestion.Gestion;
 import com.backend.backend.Modalidad_Carrera.ModalidadCarrera;

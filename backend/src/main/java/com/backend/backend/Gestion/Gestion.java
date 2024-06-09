@@ -1,6 +1,6 @@
 package com.backend.backend.Gestion;
 
-import com.backend.backend.GestionCarrera.GestionCarrera;
+import com.backend.backend.Gestion_Carrera.GestionCarrera;
 import com.backend.backend.Tipo_Periodo.TipoPeriodo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
