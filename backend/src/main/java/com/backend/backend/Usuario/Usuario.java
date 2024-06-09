@@ -57,9 +57,12 @@ public class Usuario implements UserDetails {
     private Rol rol;
 
     @OneToOne(mappedBy = "usuario")
+    @JsonIgnore
     private Docente docente;
 
+
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.MERGE)
+    @JsonIgnore
     private Administrador administrador;
 
     @Override
