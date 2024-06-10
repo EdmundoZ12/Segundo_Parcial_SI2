@@ -23,9 +23,9 @@ public class Usuario_Service {
     private final PasswordEncoder passwordEncoder;
 
     public Usuario createUsuario(DTO dto_usuario) {
-//        if (usuarioRepository.existsById(dto_usuario.getNro_registro())) {
-//            throw new RuntimeException("El número de registro ya existe");
-//        }
+        if (usuarioRepository.existsById(dto_usuario.getNro_registro())) {
+            throw new RuntimeException("El número de registro ya existe");
+        }
         System.out.println("entraaaaaaaaaaaa");
         Rol rol1 = rolRepository.getReferenceById(dto_usuario.getId_rol());
         Usuario usuario = Usuario.builder()
@@ -42,6 +42,7 @@ public class Usuario_Service {
                 .build();
 
          usuarioRepository.save(usuario);
+        System.out.println("gurada usuario");
          Rol rol = usuario.getRol();
         if (rol.getId() == 1) {
             Administrador admin = Administrador.builder()

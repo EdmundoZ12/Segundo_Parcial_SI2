@@ -4,6 +4,7 @@ import com.backend.backend.Administrador.Administrador;
 import com.backend.backend.Docente.Docente;
 import com.backend.backend.Rol.Rol;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +24,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "usuario", uniqueConstraints = {@UniqueConstraint(columnNames = {"nroRegistro"})})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // Ignorar propiedades de Hibernate
 public class Usuario implements UserDetails {
     @Id
     @Column(length = 20, nullable = false, unique = true)
@@ -53,7 +55,6 @@ public class Usuario implements UserDetails {
 
     @ManyToOne(fetch = FetchType.EAGER) // Cambio aquí
     @JoinColumn(name = "idRol", nullable = false)
-    @JsonIgnore
     private Rol rol;
 
     @OneToOne(mappedBy = "usuario")

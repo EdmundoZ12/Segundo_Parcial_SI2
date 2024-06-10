@@ -1,5 +1,6 @@
 package com.backend.backend.Rol;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "rol", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
