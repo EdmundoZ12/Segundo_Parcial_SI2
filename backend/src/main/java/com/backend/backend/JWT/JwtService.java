@@ -9,10 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 
 @Service
@@ -26,13 +23,16 @@ public class JwtService {
 
     private String getToken(Map<String, String> extraClaims, UserDetails user) {
         // Añadir el número de registro como claim personalizada
-        extraClaims.put("nro_registro",user.getUsername());
-
+        extraClaims.put("nro_registro", user.getUsername());
+        // Establecer la fecha de expiración del token (un día desde ahora)
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, 1); // Agregar un día
+        Date expirationDate = calendar.getTime();
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(user.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(expirationDate)
                 .signWith(getKey(), SignatureAlgorithm.HS256) // Cambiado a HS256
                 .compact();
     }
@@ -64,6 +64,7 @@ public class JwtService {
         final Claims claims = getAllClaims(token);
         return claimsResolver.apply(claims);
     }
+
 
     private Date getExpiration(String token) {
         return getClaim(token, Claims::getExpiration);
