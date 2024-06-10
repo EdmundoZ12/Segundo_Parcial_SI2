@@ -2,6 +2,7 @@ package com.backend.backend.Materia;
 
 import com.backend.backend.Carrera_Materia.CarreraMateria;
 import com.backend.backend.Materia_Grupo.MateriaGrupo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,8 +27,10 @@ public class Materia {
     private String nombre;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "materia")
+    @JsonIgnore
     private List<CarreraMateria> carreraMaterias = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "materia")
+    @JsonIgnore
     private List<MateriaGrupo> materiaGrupos = new ArrayList<>();
 }

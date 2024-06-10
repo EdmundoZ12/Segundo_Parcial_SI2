@@ -41,6 +41,7 @@ public class Horario {
             @JoinColumn(name = "id_grupo", referencedColumnName = "id_grupo"),
             @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia")
     })
+    @JsonIgnore
     private MateriaGrupo materiaGrupo;
 
 

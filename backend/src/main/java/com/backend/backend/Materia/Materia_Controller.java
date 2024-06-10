@@ -1,8 +1,7 @@
 package com.backend.backend.Materia;
 
 import com.backend.backend.Materia.DTO.DTO_Materia;
-import com.backend.backend.Modalidad.DTO.DTO_Modalidad;
-import com.backend.backend.Modalidad.Modalidad;
+import com.backend.backend.Materia.DTO.DTO_Materias_Grupo;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -35,6 +34,12 @@ public class Materia_Controller {
     @GetMapping
     public ResponseEntity<List<Materia>> getAllMaterias() {
         List<Materia> materias = materiaService.getAllMaterias();
+        return ResponseEntity.ok(materias);
+    }
+
+    @GetMapping(value = "grupos")
+    public ResponseEntity<List<DTO_Materias_Grupo>> getAllMateriasGrupos() {
+        List<DTO_Materias_Grupo> materias = materiaService.getAllMateriasGrupo();
         return ResponseEntity.ok(materias);
     }
 }
