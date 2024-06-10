@@ -2,8 +2,6 @@ package com.backend.backend.Horario;
 
 import com.backend.backend.Aula.Aula;
 import com.backend.backend.Materia_Grupo.MateriaGrupo;
-import com.backend.backend.Modalidad_Carrera.ModalidadCarrera;
-import com.backend.backend.Tipo_Periodo.TipoPeriodo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -38,10 +36,10 @@ public class Horario {
     @JsonIgnore
     private Aula aula;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumns({
-            @JoinColumn(name = "id_grupo", referencedColumnName = "id_grupo", insertable = false, updatable = false),
-            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", insertable = false, updatable = false)
+            @JoinColumn(name = "id_grupo", referencedColumnName = "id_grupo"),
+            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia")
     })
     private MateriaGrupo materiaGrupo;
 

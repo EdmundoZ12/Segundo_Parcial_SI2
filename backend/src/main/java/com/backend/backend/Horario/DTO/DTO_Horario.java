@@ -5,14 +5,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.time.LocalTime;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DTO_Horario_Create {
-    Integer id_grupo;
-    String cod_materia;
-    List<DTO_Horario> horarios;
+public class DTO_Horario {
+    String dia;
+    LocalTime hora_inicio;
+    LocalTime hora_fin;
+    Integer id_aula;
+
+
 }

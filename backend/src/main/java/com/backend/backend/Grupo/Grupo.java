@@ -1,6 +1,7 @@
 package com.backend.backend.Grupo;
 
 import com.backend.backend.Materia_Grupo.MateriaGrupo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,5 +27,6 @@ public class Grupo {
     private String nombre;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "grupo")
+    @JsonIgnore
     private List<MateriaGrupo> materiaGrupos = new ArrayList<>();
 }

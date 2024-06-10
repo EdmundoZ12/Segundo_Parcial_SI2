@@ -4,6 +4,7 @@ import com.backend.backend.Carrera.Carrera;
 import com.backend.backend.Carrera_Materia.CarreraMateriID;
 import com.backend.backend.Grupo.Grupo;
 import com.backend.backend.Materia.Materia;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
