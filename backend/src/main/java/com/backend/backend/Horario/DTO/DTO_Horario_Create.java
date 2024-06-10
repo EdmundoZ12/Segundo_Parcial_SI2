@@ -1,4 +1,4 @@
-package com.backend.backend.Materia.DTO;
+package com.backend.backend.Horario.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,5 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DTO_Materia {
-    String cod;
-    String nombre;
+public class DTO_Horario_Create {
 }

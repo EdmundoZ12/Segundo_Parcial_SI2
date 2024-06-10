@@ -1,7 +1,9 @@
 package com.backend.backend.Carrera;
 
 import com.backend.backend.Carrera.DTO.DTO_Carrera;
+import com.backend.backend.Carrera.DTO.DTO_Carrera_Materias;
 import com.backend.backend.Carrera.DTO.DTO_Carrera_Response;
+import com.backend.backend.Carrera.DTO.DTO_Materias;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,20 @@ public class Carrera_Controller {
             System.out.println(dto_carrera);
             carreraService.createCarrera(dto_carrera);
             return ResponseEntity.status(200).body("La carrera fue creada con Exito");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse(e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorResponse("Error al crear el usuario: " + e.getMessage()));
+        }
+    }
+
+    @PostMapping(value = "materias")
+    public ResponseEntity<?> añadirMaterias(@RequestBody DTO_Carrera_Materias dtoCarreraMaterias) {
+        try {
+            carreraService.añadirMaterias(dtoCarreraMaterias);
+            return ResponseEntity.status(200).body("Materias añadidas con Exito");
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new ErrorResponse(e.getMessage()));
@@ -60,5 +76,11 @@ public class Carrera_Controller {
                 .nombre(carrera.getNombre())
                 .build();
         return ResponseEntity.ok(dto_carrera);
+    }
+
+    @GetMapping("/materias/{cod_carrera}")
+    public ResponseEntity<List<DTO_Materias>> getMateriasByCarreraCodigo(@PathVariable("cod_carrera") String codCarrera) {
+        List<DTO_Materias> materias = carreraService.getMateriasByCarreraCodigo(codCarrera);
+        return new ResponseEntity<>(materias, HttpStatus.OK);
     }
 }
