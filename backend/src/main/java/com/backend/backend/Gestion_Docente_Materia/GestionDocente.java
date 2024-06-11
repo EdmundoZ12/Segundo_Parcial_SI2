@@ -2,10 +2,7 @@ package com.backend.backend.Gestion_Docente_Materia;
 
 import com.backend.backend.Docente.Docente;
 import com.backend.backend.Gestion.Gestion;
-import com.backend.backend.Gestion_Carrera.GestionCarreraID;
 import com.backend.backend.Materia_Grupo.MateriaGrupo;
-import com.backend.backend.Modalidad_Carrera.ModalidadCarrera;
-import com.backend.backend.Rol.Rol;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @IdClass(GestionDocenteID.class)
 @Table(name = "gestion_docente")
-public class GestioDocente {
+public class GestionDocente {
 
     @Id
     @Column(name = "id_grupo")

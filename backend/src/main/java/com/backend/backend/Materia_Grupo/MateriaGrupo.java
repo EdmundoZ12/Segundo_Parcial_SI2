@@ -1,9 +1,6 @@
 package com.backend.backend.Materia_Grupo;
 
-import com.backend.backend.Carrera.Carrera;
-import com.backend.backend.Carrera_Materia.CarreraMateriID;
-import com.backend.backend.Gestion_Carrera.GestionCarrera;
-import com.backend.backend.Gestion_Docente_Materia.GestioDocente;
+import com.backend.backend.Gestion_Docente_Materia.GestionDocente;
 import com.backend.backend.Grupo.Grupo;
 import com.backend.backend.Materia.Materia;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,5 +38,6 @@ public class MateriaGrupo {
     private Materia materia;
 
     @OneToMany(mappedBy = "materiaGrupo")
-    private List<GestioDocente> gestionDocentes = new ArrayList<>();
+    @JsonIgnore
+    private List<GestionDocente> gestionDocentes = new ArrayList<>();
 }

@@ -1,6 +1,7 @@
 package com.backend.backend.Gestion_Docente_Materia;
 
 import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Asignar_Gestion_Docente;
+import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Horarios_Cercas;
 import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Materias;
 import com.backend.backend.Horario.Horario;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
@@ -40,9 +41,9 @@ public class GestionDocente_Controller {
     }
 
     @GetMapping("/horarios/{nro_registro}")
-    public ResponseEntity<List<Horario>> obtenerHorariosCercas(@PathVariable String nro_registro) {
+    public ResponseEntity<List<DTO_Horarios_Cercas>> obtenerHorariosCercas(@PathVariable String nro_registro) {
         // Aquí puedes utilizar el número de registro para obtener los horarios
-        List<Horario> materias = gestionDocenteService.getHorariosCerca(nro_registro);
+        List<DTO_Horarios_Cercas> materias = gestionDocenteService.getHorariosCerca(nro_registro);
         return ResponseEntity.ok(materias);
     }
 }

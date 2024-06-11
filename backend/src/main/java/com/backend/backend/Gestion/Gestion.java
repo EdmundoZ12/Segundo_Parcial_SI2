@@ -1,7 +1,7 @@
 package com.backend.backend.Gestion;
 
 import com.backend.backend.Gestion_Carrera.GestionCarrera;
-import com.backend.backend.Gestion_Docente_Materia.GestioDocente;
+import com.backend.backend.Gestion_Docente_Materia.GestionDocente;
 import com.backend.backend.Tipo_Periodo.TipoPeriodo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -38,7 +38,7 @@ public class Gestion {
     private List<GestionCarrera> gestionCarreras = new ArrayList<>();
 
     @OneToMany(mappedBy = "gestion")
-    private List<GestioDocente> gestionDocentes = new ArrayList<>();
+    private List<GestionDocente> gestionDocentes = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER) // Cambio aquí
     @JoinColumn(name = "id_tperiodo", nullable = false)

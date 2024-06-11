@@ -17,5 +17,4 @@ public class DTO_Horario {
     LocalTime hora_fin;
     Integer id_aula;
 
-
 }

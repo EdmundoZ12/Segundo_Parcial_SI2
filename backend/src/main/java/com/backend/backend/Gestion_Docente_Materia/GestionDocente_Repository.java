@@ -5,12 +5,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface GestionDocente_Repository extends JpaRepository<GestioDocente,GestionDocenteID> {
+public interface GestionDocente_Repository extends JpaRepository<GestionDocente, GestionDocenteID> {
 
     boolean existsByDocenteAndCodMateriaAndIdGrupoAndIdGestion(Docente docente, String codMateria, Integer idGrupo, Integer idGestion);
 
-    List<GestioDocente> findByDocenteAndIdGestion(Docente docente, Integer idGestion);
+    List<GestionDocente> findByDocenteAndIdGestion(Docente docente, Integer idGestion);
 
+    boolean existsByCodMateriaAndIdGrupoAndIdGestion(String codMateria, Integer idGrupo, Integer idGestion);
+
+    GestionDocente findByDocenteAndCodMateriaAndIdGrupoAndIdGestion(Docente docente, String codMateria, Integer idGrupo, Integer idGestion);
 }

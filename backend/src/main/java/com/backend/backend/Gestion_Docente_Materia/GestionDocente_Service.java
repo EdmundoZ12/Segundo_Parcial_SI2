@@ -1,11 +1,12 @@
 package com.backend.backend.Gestion_Docente_Materia;
 
+import com.backend.backend.Asistencia.Asistencia_Repository;
 import com.backend.backend.Docente.Docente;
 import com.backend.backend.Docente.DocenteRepository;
-import com.backend.backend.Gestion.DTO.DTO_Gestion_Request;
 import com.backend.backend.Gestion.Gestion;
 import com.backend.backend.Gestion.Gestion_Repository;
 import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Asignar_Gestion_Docente;
+import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Horarios_Cercas;
 import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Materias;
 import com.backend.backend.Grupo.Grupo;
 import com.backend.backend.Grupo.Grupo_Repository;
@@ -16,15 +17,9 @@ import com.backend.backend.Materia.Materia_Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +31,7 @@ public class GestionDocente_Service {
     private final Materia_Repository materiaRepository;
     private final Grupo_Repository grupoRepository;
     private final Horario_Service horarioService;
+    private final Asistencia_Repository asistenciaRepository;
 
     public void createGestionDocente(DTO_Asignar_Gestion_Docente dtoAsignarGestionDocente) {
 
@@ -45,12 +41,9 @@ public class GestionDocente_Service {
         }
 
         Docente docente = docenteRepository.getReferenceById(dtoAsignarGestionDocente.getNro_registro());
-        System.out.println("ESTE ES EL DOCENTEEEEEEEEEE");
-        System.out.println(docente);
         List<DTO_Materias> materias = dtoAsignarGestionDocente.getMaterias();
         for (DTO_Materias materia : materias) {
-            boolean exists = gestionDocenteRepository.existsByDocenteAndCodMateriaAndIdGrupoAndIdGestion(
-                    docente,
+            boolean exists = gestionDocenteRepository.existsByCodMateriaAndIdGrupoAndIdGestion(
                     materia.getCod_materia(),
                     materia.getId_grupo(),
                     dtoAsignarGestionDocente.getId_gestion()
@@ -60,7 +53,7 @@ public class GestionDocente_Service {
                 continue;
             }
 
-            GestioDocente gestioDocente = GestioDocente.builder()
+            GestionDocente gestioDocente = GestionDocente.builder()
                     .docente(docente)
                     .idGestion(dtoAsignarGestionDocente.getId_gestion())
                     .idGrupo(materia.getId_grupo())
@@ -77,10 +70,10 @@ public class GestionDocente_Service {
         Gestion latestGestion = gestionRepository.findLastGestion();
         Docente docente = docenteRepository.findById(nroRegistro).orElseThrow(() -> new RuntimeException("Docente no encontrado"));
 
-        List<GestioDocente> gestionDocenteList = gestionDocenteRepository.findByDocenteAndIdGestion(docente, latestGestion.getId());
+        List<GestionDocente> gestionDocenteList = gestionDocenteRepository.findByDocenteAndIdGestion(docente, latestGestion.getId());
 
         List<DTO_Materias> materias = new ArrayList<>();
-        for (GestioDocente gestionDocente : gestionDocenteList) {
+        for (GestionDocente gestionDocente : gestionDocenteList) {
             Materia materia = materiaRepository.getReferenceById(gestionDocente.getCodMateria());
             Grupo grupo = grupoRepository.getReferenceById(gestionDocente.getIdGrupo());
             DTO_Materias dtoMateriasGrupo = DTO_Materias.builder()
@@ -127,13 +120,15 @@ public class GestionDocente_Service {
         return LocalTime.now(ZoneId.of("UTC-04:00"));
     }
 
-    public List<Horario> getHorariosCerca(String nroRegistro) {
+    public List<DTO_Horarios_Cercas> getHorariosCerca(String nroRegistro) {
         List<DTO_Materias> materias = getMateriasByDocenteAndLatestGestion(nroRegistro);
-        List<Horario> horarioList = new ArrayList<>();
-//        String dia = obtenerDiaSemanaEnEspañol();
-//        LocalTime hora_inicio = obtenerHoraEnZonaHoraria();
-        String dia = "Lunes";
-        LocalTime hora_inicio = LocalTime.parse("10:14", DateTimeFormatter.ofPattern("H:mm"));
+        List<DTO_Horarios_Cercas> horarioList = new ArrayList<>();
+        Gestion gestion = gestionRepository.findLastGestion();
+        String dia = obtenerDiaSemanaEnEspañol();
+        LocalTime hora_inicio = obtenerHoraEnZonaHoraria();
+//        String dia = "Lunes";
+//        LocalTime hora_inicio = LocalTime.parse("10:00", DateTimeFormatter.ofPattern("H:mm"));
+        Date fecha = obtenerFecha();
         System.out.println(obtenerHoraEnZonaHoraria());
         for (DTO_Materias materia : materias) {
             List<Horario> horarios = horarioService.getHorariosPorMateriaYGrupo(materia.getCod_materia(), materia.getId_grupo());
@@ -141,15 +136,43 @@ public class GestionDocente_Service {
                 LocalTime horaHorarioMenos30Min = horario.getHoraInicio().minusMinutes(30);
                 LocalTime horaHorarioMas15Min = horario.getHoraInicio().plusMinutes(15);
 
-                // Verificar si la hora actual está dentro del rango de media hora antes y 15 minutos después del horario
-                if (horario.getDia().equalsIgnoreCase(dia) && ((hora_inicio.equals(horario.getHoraInicio()) ||
-                        hora_inicio.equals(horaHorarioMenos30Min) || (hora_inicio.isAfter(horaHorarioMenos30Min) &&
-                        hora_inicio.isBefore(horario.getHoraInicio()))) || (hora_inicio.isAfter(horario.getHoraInicio()) &&
-                        hora_inicio.isBefore(horaHorarioMas15Min)))) {
-                    horarioList.add(horario);
+                if (!asistenciaRepository.existsByFechaAndGestionDocente_Docente_NroRegistroAndGestionDocente_CodMateriaAndGestionDocente_IdGrupoAndGestionDocente_IdGestion(fecha,
+                        nroRegistro, materia.getCod_materia(), materia.getId_grupo(), gestion.getId())) {
+                    // Verificar si la hora actual está dentro del rango de media hora antes y 15 minutos después del horario
+                    if (horario.getDia().equalsIgnoreCase(dia) && ((hora_inicio.equals(horario.getHoraInicio()) ||
+                            hora_inicio.equals(horaHorarioMenos30Min) || (hora_inicio.isAfter(horaHorarioMenos30Min)
+                            && hora_inicio.isBefore(horario.getHoraInicio()))) || (hora_inicio.isAfter(horario.getHoraInicio())
+                            && hora_inicio.isBefore(horario.getHoraFin())))) {
+                        String nombre = materia.getNombre_materia() + " Grupo: " + materia.getNombre_grupo();
+                        DTO_Horarios_Cercas dtoHorariosCercas = DTO_Horarios_Cercas.builder()
+                                .nombre(nombre)
+                                .id_horario(horario.getId())
+                                .id_grupo(materia.getId_grupo())
+                                .cod_materia(materia.getCod_materia())
+                                .horaInicio(horario.getHoraInicio())
+                                .horaFin(horario.getHoraFin())
+                                .dia(horario.getDia())
+                                .build();
+                        horarioList.add(dtoHorariosCercas);
+                    }
                 }
+
             }
         }
         return horarioList;
+    }
+
+    public Date obtenerFecha() {
+        // Obtener la zona horaria UTC-04:00
+        ZoneId zoneId = ZoneId.of("UTC-04:00");
+
+        // Obtener la fecha actual en la zona horaria especificada
+        LocalDate currentDate = LocalDate.now(zoneId);
+
+        // Convertir LocalDate a ZonedDateTime
+        ZonedDateTime zonedDateTime = currentDate.atStartOfDay(zoneId);
+
+        // Convertir ZonedDateTime a Date
+        return Date.from(zonedDateTime.toInstant());
     }
 }
