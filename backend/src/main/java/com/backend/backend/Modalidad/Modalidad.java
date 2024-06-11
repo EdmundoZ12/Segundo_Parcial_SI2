@@ -1,6 +1,7 @@
 package com.backend.backend.Modalidad;
 
 import com.backend.backend.Modalidad_Carrera.ModalidadCarrera;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,5 +27,6 @@ public class Modalidad {
     private String nombre;
 
     @OneToMany(mappedBy = "modalidad")
+    @JsonIgnore
     private List<ModalidadCarrera> modalidadCarreras = new ArrayList<>();
 }

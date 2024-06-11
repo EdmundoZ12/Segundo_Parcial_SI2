@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class DTO_Materias {
     String cod_materia;
     Integer id_grupo;
+    String nombre_materia;
+    String nombre_grupo;
 }

@@ -1,15 +1,15 @@
 package com.backend.backend.Gestion_Docente_Materia;
 
-import com.backend.backend.Gestion.DTO.DTO_Gestion_Request;
 import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Asignar_Gestion_Docente;
+import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Materias;
+import com.backend.backend.Horario.Horario;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/docente-materia")
@@ -30,5 +30,19 @@ public class GestionDocente_Controller {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ErrorResponse("Error al crear el usuario: " + e.getMessage()));
         }
+    }
+
+    @GetMapping("/materias/{nro_registro}")
+    public ResponseEntity<List<DTO_Materias>> obtenerHorariosPorMateriaYGrupo(@PathVariable String nro_registro) {
+        // Aquí puedes utilizar el número de registro para obtener los horarios
+        List<DTO_Materias> materias = gestionDocenteService.getMateriasByDocenteAndLatestGestion(nro_registro);
+        return ResponseEntity.ok(materias);
+    }
+
+    @GetMapping("/horarios/{nro_registro}")
+    public ResponseEntity<List<Horario>> obtenerHorariosCercas(@PathVariable String nro_registro) {
+        // Aquí puedes utilizar el número de registro para obtener los horarios
+        List<Horario> materias = gestionDocenteService.getHorariosCerca(nro_registro);
+        return ResponseEntity.ok(materias);
     }
 }
