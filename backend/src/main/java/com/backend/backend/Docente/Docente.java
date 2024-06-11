@@ -2,10 +2,7 @@ package com.backend.backend.Docente;
 
 import com.backend.backend.Usuario.Usuario;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -18,9 +15,10 @@ public class Docente {
     @Column(length = 20, nullable = false, unique = true)
     private String nroRegistro;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne()
     @JoinColumn(name = "nro_registro", referencedColumnName = "nro_registro")
     @MapsId(value = "usuario")
+    @ToString.Exclude
     private Usuario usuario;
 
 }

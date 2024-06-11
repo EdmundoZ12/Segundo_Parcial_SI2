@@ -39,6 +39,12 @@ public class Gestion_Controller {
         return ResponseEntity.ok(gestiones);
     }
 
+    @GetMapping(value = "ultgestion")
+    public ResponseEntity<DTO_Gestion> getLastGestiones() {
+        DTO_Gestion gestion = gestionService.getLastGestion();
+        return ResponseEntity.ok(gestion);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<DTO_Gestion_Response> getGestionId(@PathVariable("id") Integer id) {
         System.out.println(id);

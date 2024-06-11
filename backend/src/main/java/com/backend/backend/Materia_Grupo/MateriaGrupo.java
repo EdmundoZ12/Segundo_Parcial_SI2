@@ -2,6 +2,8 @@ package com.backend.backend.Materia_Grupo;
 
 import com.backend.backend.Carrera.Carrera;
 import com.backend.backend.Carrera_Materia.CarreraMateriID;
+import com.backend.backend.Gestion_Carrera.GestionCarrera;
+import com.backend.backend.Gestion_Docente_Materia.GestioDocente;
 import com.backend.backend.Grupo.Grupo;
 import com.backend.backend.Materia.Materia;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,6 +12,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -34,4 +39,7 @@ public class MateriaGrupo {
     @ManyToOne
     @JoinColumn(name = "cod_materia", referencedColumnName = "cod", insertable = false, updatable = false)
     private Materia materia;
+
+    @OneToMany(mappedBy = "materiaGrupo")
+    private List<GestioDocente> gestionDocentes = new ArrayList<>();
 }

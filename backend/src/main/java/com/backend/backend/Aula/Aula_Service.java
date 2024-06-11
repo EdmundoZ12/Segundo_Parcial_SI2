@@ -23,7 +23,7 @@ public class Aula_Service {
     private final Modulo_Repository moduloRepository;
 
     public void createAula(DTO_Aula dtoAula) {
-        if (aulaRepository.existsByNro(dtoAula.getNro())) {
+        if (aulaRepository.existsByNroAndModuloId(dtoAula.getNro(), dtoAula.getId_modulo())) {
             throw new RuntimeException("El Numero de Aula ya existe en el Modulo");
         }
         Modulo modulo = moduloRepository.getReferenceById(dtoAula.getId_modulo());

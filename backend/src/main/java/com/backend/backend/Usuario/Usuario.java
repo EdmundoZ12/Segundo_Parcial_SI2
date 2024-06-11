@@ -6,10 +6,7 @@ import com.backend.backend.Rol.Rol;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,10 +52,12 @@ public class Usuario implements UserDetails {
 
     @ManyToOne(fetch = FetchType.EAGER) // Cambio aquí
     @JoinColumn(name = "idRol", nullable = false)
+    @ToString.Exclude
     private Rol rol;
 
-    @OneToOne(mappedBy = "usuario")
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.MERGE)
     @JsonIgnore
+    @ToString.Exclude
     private Docente docente;
 
 

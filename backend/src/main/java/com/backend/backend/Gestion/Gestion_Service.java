@@ -118,4 +118,17 @@ public class Gestion_Service {
 
         return gestions;
     }
+
+    public DTO_Gestion getLastGestion() {
+        Gestion lastGestion = gestionRepository.findLastGestion();
+
+        return DTO_Gestion.builder()
+                .id(lastGestion.getId())
+                .nombre(lastGestion.getNombre())
+                .fecha_inicio(lastGestion.getFechaInicio())
+                .fecha_final(lastGestion.getFechaFinal())
+                .id_tperiodo(lastGestion.getTipoPeriodo().getId())
+                .nombre_tperiodo(lastGestion.getTipoPeriodo().getNombre())
+                .build();
+    }
 }
