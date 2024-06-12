@@ -1,0 +1,273 @@
+
+<div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+      <!--begin::Aside-->
+      <app-sidebar></app-sidebar>
+      <!--end::Aside-->
+      <!--begin::Wrapper-->
+      <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+        <!--begin::Header-->
+        <app-topbar></app-topbar>
+        <!--end::Header-->
+        <!--begin::Content-->
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+          <!--begin::Toolbar-->
+          <div class="toolbar" id="kt_toolbar">
+            <!--begin::Container-->
+            <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+              <!--begin::Page title-->
+              <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+                <!--begin::Title-->
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">dashboard
+                    <span class="h-20px border-gray-400 border-start ms-3 mx-2"></span>
+                    <ol class="breadcrumb text-muted fs-6 fw-semibold">
+                      
+                      <li class="breadcrumb-item pe-3 ">Usuario</li>
+                    </ol>
+                  </h1>
+                <!--end::Title-->
+              </div>
+              <!--end::Page title-->
+              <!--begin::Actions-->
+              <div class="d-flex align-items-center py-1">
+                
+             
+                <!--end::Button-->
+              </div>
+              <!--end::Actions-->
+            </div>
+            <!--end::Container-->
+          </div>
+          <!--end::Toolbar-->
+          <!--begin::Post-->
+          <div class="post d-flex flex-column-fluid" id="kt_post">
+            <!--begin::Container-->
+            <div id="kt_content_container" class="container-xxl">
+                
+              <div class="row gy-5 g-xl-8">
+                <div class="col-12">
+                    <div class="card mb-5 mb-xl-5">
+                        <!--begin::Card header-->
+                        <div class="card-header border-0 pt-5">
+                            <!--begin::Card title-->
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fs-3 mb-1 fw-700">Usuarios</span>
+                                <span class="text-muted mt-1 fw-semibold fs-7">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, aspernatur.</span>
+                            </h3>
+                            <div class="card-toolbar">
+                                <a [routerLink]="['/usuarios/create']"  class="btn btn-dark">
+                                    Nuevo usuario
+                                </a>
+                            </div>
+                            
+                        </div>
+                        <!--begin::Card header-->
+                        <div class="card-body pt-0">
+                    
+                            <!--begin::Seprator-->
+                            <div class="separator separator-dashed my-4"></div>
+                            <!--end::Seprator-->
+                    
+                    
+                    
+                            <!--begin::Seprator-->
+                            <div class="separator separator-dashed my-4"></div>
+                            <!--end::Seprator-->
+                    
+                    
+                            <div class="table-responsive">
+                                <!--begin::Table-->
+                                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" style="margin-bottom: 0px !important;">
+                                    <!--begin::Table head-->
+                                    
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody *ngIf="!load_data" >
+                                        
+                                       <ng-container *ngIf="usuarios.length >=1" >
+                                                <ng-container *ngFor="let item of usuarios |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <!--begin::Avatar-->
+                                                                <div class="symbol symbol-45px me-5">
+                                                                    <span class="symbol-label fw-bold bg-light-danger text-danger">
+                                                                        {{item.nombre.substr(0,1)}}
+                                                                    </span>
+                                                                </div>
+                                                                <!--end::Avatar-->
+                                                                <!--begin::Name-->
+                                                                <div class="d-flex justify-content-start flex-column">
+                                                                    <a class="text-dark fw-bold text-hover-primary mb-1 fs-6">
+                                                                        {{item.nombre.split(' ')[0]}}
+                                                                        {{item.apellido.split(' ')[0]}}   
+                                                                    </a>
+                                                                    <a class="text-hover-primary fw-semibold d-block fs-7">
+                                                                        <span class="svg-icon svg-icon-5 svg-icon-success ms-n1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M9.89557 13.4982L7.79487 11.2651C7.26967 10.7068 6.38251 10.7068 5.85731 11.2651C5.37559 11.7772 5.37559 12.5757 5.85731 13.0878L9.74989 17.2257C10.1448 17.6455 10.8118 17.6455 11.2066 17.2257L18.1427 9.85252C18.6244 9.34044 18.6244 8.54191 18.1427 8.02984C17.6175 7.47154 16.7303 7.47154 16.2051 8.02984L11.061 13.4982C10.7451 13.834 10.2115 13.834 9.89557 13.4982Z" fill="currentColor"/>
+                                                                            </svg>
+                                                                        </span>
+                                                                        {{item.email}}
+                                                                    </a>
+                                                                </div>
+                                                                <!--end::Name-->
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <span class="fw-semibold text-gray-400 d-block fs-8">Rol</span>
+                                                            <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">
+                                                            {{item.authorities[0].authority}}
+                                                            </a>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <span class="badge "
+                                                            [ngClass]="{'badge-light-primary':item.enabled,
+                                                            'badge-light-danger':!item.enabled}">
+                                                            <span *ngIf="item.enabled">Activado</span>
+                                                            <span *ngIf="!item.enabled">Desactivado</span>       
+                                                        </span>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-bs-toggle="modal" [attr.data-bs-target]="'#state-'+item._id">
+                                                                    
+                                                                    <span *ngIf="item.estado" class="svg-icon svg-icon-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path opacity="0.3" d="M6 19.7C5.7 19.7 5.5 19.6 5.3 19.4C4.9 19 4.9 18.4 5.3 18L18 5.3C18.4 4.9 19 4.9 19.4 5.3C19.8 5.7 19.8 6.29999 19.4 6.69999L6.7 19.4C6.5 19.6 6.3 19.7 6 19.7Z" fill="currentColor"/>
+                                                                        <path d="M18.8 19.7C18.5 19.7 18.3 19.6 18.1 19.4L5.40001 6.69999C5.00001 6.29999 5.00001 5.7 5.40001 5.3C5.80001 4.9 6.40001 4.9 6.80001 5.3L19.5 18C19.9 18.4 19.9 19 19.5 19.4C19.3 19.6 19 19.7 18.8 19.7Z" fill="currentColor"/>
+                                                                        </svg>
+                                                                    </span>
+                                                                    
+                                                                    <span   *ngIf="!item.estado" class="svg-icon svg-icon-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path opacity="0.3" d="M10 18C9.7 18 9.5 17.9 9.3 17.7L2.3 10.7C1.9 10.3 1.9 9.7 2.3 9.3C2.7 8.9 3.29999 8.9 3.69999 9.3L10.7 16.3C11.1 16.7 11.1 17.3 10.7 17.7C10.5 17.9 10.3 18 10 18Z" fill="currentColor"/>
+                                                                        <path d="M10 18C9.7 18 9.5 17.9 9.3 17.7C8.9 17.3 8.9 16.7 9.3 16.3L20.3 5.3C20.7 4.9 21.3 4.9 21.7 5.3C22.1 5.7 22.1 6.30002 21.7 6.70002L10.7 17.7C10.5 17.9 10.3 18 10 18Z" fill="currentColor"/>
+                                                                        </svg>
+                                                                    </span>
+                                                                        <!--end::Svg Icon-->
+                                                                </a>
+                                                                <a   [routerLink]="['/usuarios/edit',item.nroRegistro]" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm ">
+                                                                    <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                                                    <span class="svg-icon svg-icon-3">
+                                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="currentColor"></path>
+                                                                            <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="currentColor"></path>
+                                                                        </svg>
+                                                                    </span>
+                                                                    <!--end::Svg Icon-->
+                                                                </a>
+                                                            
+                                                            </div>
+                                
+                                                            <div id="state-{{item.nroRegistro}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h3 class="modal-title">
+                                                                            <span *ngIf="item.enabled" >Desactivar</span>
+                                                                            <span *ngIf="!item.enabled">Activar</span>  
+                                                                            {{item.nombre.split(' ')[0]}}
+                                                                            {{item.apellido.split(' ')[0]}}
+                                                                            
+                                                                            </h3>
+                                                                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                                                                                <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/metronic/releases/2022-07-14-092914/core/html/src/media/icons/duotune/arrows/arr088.svg-->
+                                                                                <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                    <rect opacity="0.5" x="7.05025" y="15.5356" width="12" height="2" rx="1" transform="rotate(-45 7.05025 15.5356)" fill="currentColor"/>
+                                                                                    <rect x="8.46447" y="7.05029" width="12" height="2" rx="1" transform="rotate(45 8.46447 7.05029)" fill="currentColor"/>
+                                                                                    </svg>
+                                                                                </span>
+                                                                                    <!--end::Svg Icon-->
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p class="mb-0">Confirmación para cambio de estado de la cuenta.</p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button  type="button" class="btn btn-danger font-weight-bold" data-bs-dismiss="modal">
+                                                                                <span class="svg-icon svg-icon-3 ms-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path opacity="0.3" d="M6 19.7C5.7 19.7 5.5 19.6 5.3 19.4C4.9 19 4.9 18.4 5.3 18L18 5.3C18.4 4.9 19 4.9 19.4 5.3C19.8 5.7 19.8 6.29999 19.4 6.69999L6.7 19.4C6.5 19.6 6.3 19.7 6 19.7Z" fill="currentColor"/>
+                                                                                    <path d="M18.8 19.7C18.5 19.7 18.3 19.6 18.1 19.4L5.40001 6.69999C5.00001 6.29999 5.00001 5.7 5.40001 5.3C5.80001 4.9 6.40001 4.9 6.80001 5.3L19.5 18C19.9 18.4 19.9 19 19.5 19.4C19.3 19.6 19 19.7 18.8 19.7Z" fill="currentColor"/>
+                                                                                    </svg>
+                                                                                    </span>
+                                                                                Cerrar
+                                                                            </button>
+                                                                            <button *ngIf="!btn_state_load"    type="button" class="btn btn-dark font-weight-bold">
+                                                                                <span class="svg-icon svg-icon-3 ms-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path opacity="0.3" d="M10 18C9.7 18 9.5 17.9 9.3 17.7L2.3 10.7C1.9 10.3 1.9 9.7 2.3 9.3C2.7 8.9 3.29999 8.9 3.69999 9.3L10.7 16.3C11.1 16.7 11.1 17.3 10.7 17.7C10.5 17.9 10.3 18 10 18Z" fill="currentColor"/>
+                                                                                    <path d="M10 18C9.7 18 9.5 17.9 9.3 17.7C8.9 17.3 8.9 16.7 9.3 16.3L20.3 5.3C20.7 4.9 21.3 4.9 21.7 5.3C22.1 5.7 22.1 6.30002 21.7 6.70002L10.7 17.7C10.5 17.9 10.3 18 10 18Z" fill="currentColor"/>
+                                                                                    </svg>
+                                                                                </span>
+                                                                                Confirmar
+                                                                            </button>
+                                
+                                                                            <button *ngIf="btn_state_load" class="btn btn-dark" type="button" disabled>
+                                                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                                                Procesando...
+                                                                            </button>
+                                
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                </ng-container>
+                                       </ng-container>
+                                        <ng-container  *ngIf="usuarios.length ==0" >
+                                            <div data-kt-search-element="empty" class="text-center">
+                                                <!--begin::Icon-->
+                                                <div class="pt-10 pb-5">
+                                                    <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor"/>
+                                                        <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor"/>
+                                                        </svg>
+                                                        </span>
+                                                </div>
+                                                <!--end::Icon-->
+                                            
+                                                <!--begin::Message-->
+                                                <div class="pb-15 fw-semibold">
+                                                    <h3 class="text-gray-600 fs-5 mb-2">no se encontraron resultados</h3>
+                                                    <div class="text-muted fs-7">Vuelva a intentar con una consulta diferente</div>
+                                                </div>
+                                                <!--end::Message-->
+                                            </div>
+                                        </ng-container>
+                                    </tbody>
+                                    <tbody  *ngIf="load_data">
+                                        <tr>
+                                            <td class="text-center" colspan="4">
+                                                <div class="spinner-border" style="width: 3rem; height: 3rem; margin-top: 1.5rem;" role="status">
+                                                    <span class="sr-only">Loading...</span>
+                                                  </div>
+                                            </td>
+                                        </tr>
+                                    </tbody  >
+                                    <!--end::Table body-->
+                                </table>
+                                <!--end::Table-->
+                            </div> 
+                            
+                        </div>
+                        <div class="card-footer">
+                            <ngb-pagination [collectionSize]="usuarios.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" />
+                        </div>
+                    </div>
+              
+                </div>
+              </div>
+
+            </div>
+            <!--end::Container-->
+          </div>
+          <!--end::Post-->
+        </div>
+        <!--end::Content-->
+       
+      </div>
+      <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+  </div>
