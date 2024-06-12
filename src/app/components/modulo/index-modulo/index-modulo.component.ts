@@ -11,7 +11,7 @@ export class IndexModuloComponent {
   public load_data = true;
   
   public page=1
-  public pageSize=3
+  public pageSize=8
   public token = localStorage.getItem('token');
   public modulos:Array<any> = []
 

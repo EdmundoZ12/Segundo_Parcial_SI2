@@ -29,4 +29,9 @@ export class ModuloService {
     return this._http.post(this.url+'/api/aula/create',data,{headers:headers})
   }
 
+  obtenerAulas(id:any,token:any):Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.url+'/api/modulo/aulas/'+id,{headers:headers})
+  }
+
 }

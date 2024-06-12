@@ -14,7 +14,7 @@ export class IndexCarreraComponent {
 
   public carreras: Array<any> = [];
   public page=1
-  public pageSize=3
+  public pageSize=8
   public btn_state_load=false
   public load_data=true
 

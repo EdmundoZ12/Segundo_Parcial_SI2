@@ -28,4 +28,14 @@ export class MateriaService {
     return this._http.post(this.url + '/api/grupo/create', data, { headers: headers });
   }
 
+  createMateria(data: any, token: any): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.post(this.url + '/api/materia/create', data, { headers: headers });
+  }
+
+  getMaterias(token: any): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.url + '/api/materia', { headers: headers });
+  }
+
 }

@@ -49,7 +49,6 @@ export class UsuarioService {
         const token:any = localStorage.getItem('token');
         const helper= new JwtHelperService();
         const decode=helper.decodeToken(token);
-        console.log('entro')
         if(!token){
           localStorage.clear();
           return false;

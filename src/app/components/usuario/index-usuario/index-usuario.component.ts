@@ -13,7 +13,7 @@ export class IndexUsuarioComponent {
   public token:any = localStorage.getItem('token');
   public usuarios: Array<any> = [];
   public page=1
-  public pageSize=3
+  public pageSize=8
   public btn_state_load=false
   public load_data=true
 
