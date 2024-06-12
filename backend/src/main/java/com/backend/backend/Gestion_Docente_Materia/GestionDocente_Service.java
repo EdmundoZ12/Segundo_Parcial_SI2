@@ -1,6 +1,8 @@
 package com.backend.backend.Gestion_Docente_Materia;
 
 import com.backend.backend.Asistencia.Asistencia_Repository;
+import com.backend.backend.Asistencia.Asistencia_Service;
+import com.backend.backend.Asistencia.DTO.DTO_Asistencia;
 import com.backend.backend.Docente.Docente;
 import com.backend.backend.Docente.DocenteRepository;
 import com.backend.backend.Gestion.Gestion;
@@ -14,7 +16,9 @@ import com.backend.backend.Horario.Horario;
 import com.backend.backend.Horario.Horario_Service;
 import com.backend.backend.Materia.Materia;
 import com.backend.backend.Materia.Materia_Repository;
+import com.backend.backend.Zona_Horario.ZonaHoraria_Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.time.*;
@@ -32,6 +36,8 @@ public class GestionDocente_Service {
     private final Grupo_Repository grupoRepository;
     private final Horario_Service horarioService;
     private final Asistencia_Repository asistenciaRepository;
+    private final Asistencia_Service asistenciaService;
+    private final ZonaHoraria_Service zonaHorariaService;
 
     public void createGestionDocente(DTO_Asignar_Gestion_Docente dtoAsignarGestionDocente) {
 
@@ -87,55 +93,20 @@ public class GestionDocente_Service {
         return materias;
     }
 
-    public String obtenerDiaSemanaEnEspañol() {
-        // Mapeo de nombres de días en inglés a español
-        Map<String, String> dayTranslations = new HashMap<>();
-        dayTranslations.put("MONDAY", "Lunes");
-        dayTranslations.put("TUESDAY", "Martes");
-        dayTranslations.put("WEDNESDAY", "Miércoles");
-        dayTranslations.put("THURSDAY", "Jueves");
-        dayTranslations.put("FRIDAY", "Viernes");
-        dayTranslations.put("SATURDAY", "Sábado");
-        dayTranslations.put("SUNDAY", "Domingo");
-
-        // Obtener la zona horaria UTC-04:00
-        ZoneId zoneId = ZoneId.of("UTC-04:00");
-
-        // Obtener la fecha actual en la zona horaria especificada
-        LocalDate currentDate = LocalDate.now(zoneId);
-
-        // Obtener el día de la semana actual
-        DayOfWeek currentDayOfWeek = currentDate.getDayOfWeek();
-
-        // Convertir el día de la semana a texto en inglés
-        String dayOfWeekEnglish = currentDayOfWeek.toString();
-
-
-        // Obtener el nombre del día en español a partir del mapeo
-        return dayTranslations.get(dayOfWeekEnglish);
-    }
-
-    public LocalTime obtenerHoraEnZonaHoraria() {
-        // Obtener la hora actual en la zona horaria UTC-04:00
-        return LocalTime.now(ZoneId.of("UTC-04:00"));
-    }
 
     public List<DTO_Horarios_Cercas> getHorariosCerca(String nroRegistro) {
         List<DTO_Materias> materias = getMateriasByDocenteAndLatestGestion(nroRegistro);
         List<DTO_Horarios_Cercas> horarioList = new ArrayList<>();
         Gestion gestion = gestionRepository.findLastGestion();
-        String dia = obtenerDiaSemanaEnEspañol();
-        LocalTime hora_inicio = obtenerHoraEnZonaHoraria();
+        String dia = zonaHorariaService.obtenerDiaSemanaEnEspañol();
+        LocalTime hora_inicio = zonaHorariaService.obtenerHoraEnZonaHoraria();
+        Date fecha = zonaHorariaService.obtenerFecha();
 //        String dia = "Lunes";
-//        LocalTime hora_inicio = LocalTime.parse("10:00", DateTimeFormatter.ofPattern("H:mm"));
-        Date fecha = obtenerFecha();
-        System.out.println(obtenerHoraEnZonaHoraria());
+//        LocalTime hora_inicio = LocalTime.parse("11:29", DateTimeFormatter.ofPattern("H:mm"));
         for (DTO_Materias materia : materias) {
             List<Horario> horarios = horarioService.getHorariosPorMateriaYGrupo(materia.getCod_materia(), materia.getId_grupo());
             for (Horario horario : horarios) {
                 LocalTime horaHorarioMenos30Min = horario.getHoraInicio().minusMinutes(30);
-                LocalTime horaHorarioMas15Min = horario.getHoraInicio().plusMinutes(15);
-
                 if (!asistenciaRepository.existsByFechaAndGestionDocente_Docente_NroRegistroAndGestionDocente_CodMateriaAndGestionDocente_IdGrupoAndGestionDocente_IdGestion(fecha,
                         nroRegistro, materia.getCod_materia(), materia.getId_grupo(), gestion.getId())) {
                     // Verificar si la hora actual está dentro del rango de media hora antes y 15 minutos después del horario
@@ -154,6 +125,16 @@ public class GestionDocente_Service {
                                 .dia(horario.getDia())
                                 .build();
                         horarioList.add(dtoHorariosCercas);
+                    } else if (hora_inicio.isAfter(horario.getHoraFin()) || hora_inicio.equals(horario.getHoraFin())) {
+                        DTO_Asistencia dtoAsistencia = DTO_Asistencia.builder()
+                                .id_horario(horario.getId())
+                                .cod_materia(materia.getCod_materia())
+                                .nro_registro(nroRegistro)
+                                .id_grupo(materia.getId_grupo())
+                                .build();
+
+                        asistenciaService.crearAsistencia(dtoAsistencia);
+
                     }
                 }
 
@@ -162,17 +143,5 @@ public class GestionDocente_Service {
         return horarioList;
     }
 
-    public Date obtenerFecha() {
-        // Obtener la zona horaria UTC-04:00
-        ZoneId zoneId = ZoneId.of("UTC-04:00");
 
-        // Obtener la fecha actual en la zona horaria especificada
-        LocalDate currentDate = LocalDate.now(zoneId);
-
-        // Convertir LocalDate a ZonedDateTime
-        ZonedDateTime zonedDateTime = currentDate.atStartOfDay(zoneId);
-
-        // Convertir ZonedDateTime a Date
-        return Date.from(zonedDateTime.toInstant());
-    }
 }

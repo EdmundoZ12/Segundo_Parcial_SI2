@@ -31,7 +31,7 @@ public class Asistencia {
     @Column(name = "hora_entrada")
     private LocalTime horaEntrada;
 
-    @Column(nullable = false, length = 20)
+    @Column(length = 20)
     private String modalidad;
 
     @Column(nullable = true)
