@@ -1,7 +1,7 @@
 package com.backend.backend.Asistencia;
 
 import com.backend.backend.Docente.Docente;
-import com.backend.backend.Gestion_Docente_Materia.GestionDocente;
+import com.backend.backend.Gest_Doc_Mate.GestionDocente;
 import com.backend.backend.Tipo_Asistencia.TipoAsistencia;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

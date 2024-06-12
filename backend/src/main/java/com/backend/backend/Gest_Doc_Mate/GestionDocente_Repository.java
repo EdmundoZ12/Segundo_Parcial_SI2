@@ -1,11 +1,10 @@
-package com.backend.backend.Gestion_Docente_Materia;
+package com.backend.backend.Gest_Doc_Mate;
 
 import com.backend.backend.Docente.Docente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface GestionDocente_Repository extends JpaRepository<GestionDocente, GestionDocenteID> {

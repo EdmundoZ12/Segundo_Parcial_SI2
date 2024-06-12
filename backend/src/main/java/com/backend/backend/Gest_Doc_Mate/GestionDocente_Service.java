@@ -1,4 +1,4 @@
-package com.backend.backend.Gestion_Docente_Materia;
+package com.backend.backend.Gest_Doc_Mate;
 
 import com.backend.backend.Asistencia.Asistencia_Repository;
 import com.backend.backend.Asistencia.Asistencia_Service;
@@ -7,9 +7,9 @@ import com.backend.backend.Docente.Docente;
 import com.backend.backend.Docente.DocenteRepository;
 import com.backend.backend.Gestion.Gestion;
 import com.backend.backend.Gestion.Gestion_Repository;
-import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Asignar_Gestion_Docente;
-import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Horarios_Cercas;
-import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Materias;
+import com.backend.backend.Gest_Doc_Mate.DTO.DTO_Asignar_Gestion_Docente;
+import com.backend.backend.Gest_Doc_Mate.DTO.DTO_Horarios_Cercas;
+import com.backend.backend.Gest_Doc_Mate.DTO.DTO_Materias;
 import com.backend.backend.Grupo.Grupo;
 import com.backend.backend.Grupo.Grupo_Repository;
 import com.backend.backend.Horario.Horario;
@@ -18,11 +18,9 @@ import com.backend.backend.Materia.Materia;
 import com.backend.backend.Materia.Materia_Repository;
 import com.backend.backend.Zona_Horario.ZonaHoraria_Service;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service

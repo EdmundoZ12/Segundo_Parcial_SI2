@@ -1,4 +1,4 @@
-package com.backend.backend.Gestion_Docente_Materia;
+package com.backend.backend.Gest_Doc_Mate;
 
 import com.backend.backend.Docente.Docente;
 import com.backend.backend.Gestion.Gestion;

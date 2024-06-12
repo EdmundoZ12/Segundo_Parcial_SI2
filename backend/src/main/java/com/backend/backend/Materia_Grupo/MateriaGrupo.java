@@ -1,6 +1,6 @@
 package com.backend.backend.Materia_Grupo;
 
-import com.backend.backend.Gestion_Docente_Materia.GestionDocente;
+import com.backend.backend.Gest_Doc_Mate.GestionDocente;
 import com.backend.backend.Grupo.Grupo;
 import com.backend.backend.Materia.Materia;
 import com.fasterxml.jackson.annotation.JsonIgnore;

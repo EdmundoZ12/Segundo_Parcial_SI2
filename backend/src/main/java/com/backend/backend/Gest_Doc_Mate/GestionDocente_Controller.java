@@ -1,9 +1,8 @@
-package com.backend.backend.Gestion_Docente_Materia;
+package com.backend.backend.Gest_Doc_Mate;
 
-import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Asignar_Gestion_Docente;
-import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Horarios_Cercas;
-import com.backend.backend.Gestion_Docente_Materia.DTO.DTO_Materias;
-import com.backend.backend.Horario.Horario;
+import com.backend.backend.Gest_Doc_Mate.DTO.DTO_Asignar_Gestion_Docente;
+import com.backend.backend.Gest_Doc_Mate.DTO.DTO_Horarios_Cercas;
+import com.backend.backend.Gest_Doc_Mate.DTO.DTO_Materias;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

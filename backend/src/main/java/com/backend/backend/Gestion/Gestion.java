@@ -1,7 +1,7 @@
 package com.backend.backend.Gestion;
 
 import com.backend.backend.Gestion_Carrera.GestionCarrera;
-import com.backend.backend.Gestion_Docente_Materia.GestionDocente;
+import com.backend.backend.Gest_Doc_Mate.GestionDocente;
 import com.backend.backend.Tipo_Periodo.TipoPeriodo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

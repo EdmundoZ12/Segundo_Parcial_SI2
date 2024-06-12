@@ -1,4 +1,4 @@
-package com.backend.backend.Gestion_Docente_Materia;
+package com.backend.backend.Gest_Doc_Mate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
