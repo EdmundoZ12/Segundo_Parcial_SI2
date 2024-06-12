@@ -1,27 +1,87 @@
-# Panel
+# Segundo_Parcial_SI2
+backend and frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+## Tecnologías Utilizadas
 
-## Development server
+### Backend
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Java**
+- **Spring Boot**
+    - Spring Web
+    - Spring Data JPA
+    - Spring Security
+    - Lombok
+    - Otros...
 
-## Code scaffolding
+### Frontend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **TypeScript**
+- **Angular**
+    - Angular CLI
+    - Angular Material
+    - Otros...
 
-## Build
+### Base de Datos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **PostgreSQL** (Para producción)
 
-## Running unit tests
+### Herramientas y Otros
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Maven** (Para la gestión de dependencias del backend)
+- **Node.js & NPM** (Para la gestión de dependencias del frontend)
+- **Git** (Para el control de versiones)
+- **Postman** (Para probar APIs)
+- Otros...
 
-## Running end-to-end tests
+## Requisitos
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Java 11+**
+- **Node.js 14+** y **NPM 6+**
+- **Maven 3.6+**
 
-## Further help
+## Instalación y Configuración
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Backend
+
+1. Clonar el repositorio:
+    ```sh
+    git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+    cd nombre-del-repositorio/backend
+    ```
+
+2. Configurar el archivo `application.properties` en `src/main/resources/` con tus parámetros de base de datos.
+
+3. Compilar y ejecutar el proyecto:
+    ```sh
+    mvn clean install
+    mvn spring-boot:run
+    ```
+
+### Frontend
+
+1. Navegar al directorio del frontend:
+    ```sh
+    cd ../frontend
+    ```
+
+2. Instalar las dependencias:
+    ```sh
+    npm install
+    ```
+
+3. Ejecutar la aplicación Angular:
+    ```sh
+    ng serve
+    ```
+
+## Uso
+
+Instrucciones sobre cómo utilizar tu proyecto una vez que esté en funcionamiento.
+
+## Contribuir
+
+1. Hacer un fork del proyecto.
+2. Crear una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realizar los cambios necesarios y commit (`git commit -m 'Agregar nueva funcionalidad'`).
+4. Hacer push a la rama (`git push origin feature/nueva-funcionalidad`).
+5. Abrir un Pull Request.
