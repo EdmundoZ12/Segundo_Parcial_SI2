@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Component({
@@ -7,16 +8,14 @@ import { Component } from '@angular/core';
   styleUrls:[ './sidebar.component.css']
 })
 export class SidebarComponent {
-  public token = localStorage.getItem('token')
-  public user = JSON.parse(localStorage.getItem('user') || '{}');
-  public rolId =''
-  public rol:any;
-  public funcionalidades:any=[]
+  
+ 
   constructor(
     
   ) { }
 
   
+    
 
   
 }

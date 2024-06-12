@@ -38,6 +38,39 @@ export class UsuarioService {
     return this._http.get(this.url+'/api/rol',{headers:headers})
   }
 
+  getUsuario(id:any,token:any):Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.url+'/api/usuario/'+id,{headers:headers})
+  }
+
+  EstaAutenticado(){
+    try {
+      
+        const token:any = localStorage.getItem('token');
+        const helper= new JwtHelperService();
+        const decode=helper.decodeToken(token);
+        console.log('entro')
+        if(!token){
+          localStorage.clear();
+          return false;
+        }
+        if(!decode || decode ==undefined){
+          localStorage.clear();
+          return false;
+        }
+    
+        if(helper.isTokenExpired(token)){
+          localStorage.clear();
+          return false;
+        }
+    
+      
+    } catch (error) {
+      localStorage.clear();
+      return false;
+    }
+    return true;
+  }
 
   
   

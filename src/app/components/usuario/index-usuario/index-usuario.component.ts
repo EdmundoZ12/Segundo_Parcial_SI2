@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-index-usuario',
   templateUrl: './index-usuario.component.html',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class IndexUsuarioComponent {
  
-  public token = localStorage.getItem('token');
+  public token:any = localStorage.getItem('token');
   public usuarios: Array<any> = [];
   public page=1
   public pageSize=3
@@ -23,6 +24,7 @@ export class IndexUsuarioComponent {
 
   ngOnInit(): void {
     this.iniciarDatos()
+   
   }
 
 
@@ -34,6 +36,7 @@ export class IndexUsuarioComponent {
         console.log(this.usuarios)
         console.log(this.usuarios.length)
         this.load_data=false
+     
       })
    
   }

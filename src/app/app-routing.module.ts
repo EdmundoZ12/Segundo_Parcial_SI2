@@ -18,6 +18,7 @@ import { IndexGrupoComponent } from './components/grupo/index-grupo/index-grupo.
 import { CreateGrupoComponent } from './components/grupo/create-grupo/create-grupo.component';
 import { IndexMateriaComponent } from './components/materia/index-materia/index-materia.component';
 import { CreateMateriaComponent } from './components/materia/create-materia/create-materia.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -25,30 +26,30 @@ import { CreateMateriaComponent } from './components/materia/create-materia/crea
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
-  {path:'dashboard',component:DashboardComponent},
+  {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
   
-  {path:'usuarios',component:IndexUsuarioComponent},
-  {path:'usuarios/create',component:CreateUsuarioComponent},
-  {path:'usuarios/edit/:id',component:EditUsuarioComponent},
+  {path:'usuarios',component:IndexUsuarioComponent,canActivate:[AuthGuard]},
+  {path:'usuarios/create',component:CreateUsuarioComponent,canActivate:[AuthGuard]},
+  {path:'usuarios/edit/:id',component:EditUsuarioComponent,canActivate:[AuthGuard]},
 
-  {path:'modulos',component:IndexModuloComponent},
-  {path:'modulos/create',component:CreateModuloComponent},
-  {path:'modulos/:id',component:EditModuloComponent},
+  {path:'modulos',component:IndexModuloComponent,canActivate:[AuthGuard]},
+  {path:'modulos/create',component:CreateModuloComponent,canActivate:[AuthGuard]},
+  {path:'modulos/:id',component:EditModuloComponent,canActivate:[AuthGuard]},
 
-  {path:'carrera',component:IndexCarreraComponent},
-  {path:'carrera/create',component:CreateCarreraComponent},
+  {path:'carrera',component:IndexCarreraComponent,canActivate:[AuthGuard]},
+  {path:'carrera/create',component:CreateCarreraComponent,canActivate:[AuthGuard]},
   
-  {path:'gestion',component:IndexGestionComponent},
-  {path:'gestion/create',component:CreateGestionComponent},
+  {path:'gestion',component:IndexGestionComponent,canActivate:[AuthGuard]},
+  {path:'gestion/create',component:CreateGestionComponent,canActivate:[AuthGuard]},
 
-  {path:'horario',component:IndexHorarioComponent},
-  {path:'horario/create',component:CreateHorarioComponent},
+  {path:'horario',component:IndexHorarioComponent,canActivate:[AuthGuard]},
+  {path:'horario/create',component:CreateHorarioComponent,canActivate:[AuthGuard]},
 
-  {path:'grupo',component:IndexGrupoComponent},
-  {path:'grupo/create',component:CreateGrupoComponent},
+  {path:'grupo',component:IndexGrupoComponent,canActivate:[AuthGuard]},
+  {path:'grupo/create',component:CreateGrupoComponent,canActivate:[AuthGuard]},
 
-  {path:'materia',component:IndexMateriaComponent},
-  {path:'materia/create',component:CreateMateriaComponent},
+  {path:'materia',component:IndexMateriaComponent,canActivate:[AuthGuard]},
+  {path:'materia/create',component:CreateMateriaComponent,canActivate:[AuthGuard]},
   
 ];
 
