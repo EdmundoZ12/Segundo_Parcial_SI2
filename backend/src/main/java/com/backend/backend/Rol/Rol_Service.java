@@ -27,4 +27,8 @@ public class Rol_Service {
     public List<Rol> getAllRoles() {
         return rolRepository.findAll();
     }
+
+    public Rol getRol(Integer id){
+        return rolRepository.getReferenceById(id);
+    }
 }

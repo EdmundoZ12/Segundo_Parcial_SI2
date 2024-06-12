@@ -1,6 +1,7 @@
 package com.backend.backend.Usuario;
 
 import com.backend.backend.Usuario.DTO.DTO;
+import com.backend.backend.Usuario.DTO.DTO_Response;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -53,13 +54,18 @@ public class Usuario_Controller {
     }
 
     @GetMapping("/{nro_registro}")
-    public ResponseEntity<DTO> getUsuarioByNroRegistro(@PathVariable("nro_registro") String nroRegistro) {
+    public ResponseEntity<DTO_Response> getUsuarioByNroRegistro(@PathVariable("nro_registro") String nroRegistro) {
         Usuario usuario = usuarioService.getUsuarioByNroRegistro(nroRegistro);
-        DTO user = DTO.builder()
+        DTO_Response user = DTO_Response.builder()
                 .nombre(usuario.getNombre())
                 .apellido(usuario.getApellido())
                 .nro_registro(usuario.getNroRegistro())
                 .ci(usuario.getCi())
+                .email(usuario.getEmail())
+                .fechaNacimiento(usuario.getFechaNacimiento())
+                .direccion(usuario.getDireccion())
+                .telefono(usuario.getTelefono())
+                .id_rol(usuario.getRol().getId())
                 .build();
         return ResponseEntity.ok(user);
     }

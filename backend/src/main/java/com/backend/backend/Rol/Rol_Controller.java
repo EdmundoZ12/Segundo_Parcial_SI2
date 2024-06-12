@@ -1,7 +1,9 @@
 package com.backend.backend.Rol;
 
 import com.backend.backend.Rol.DTO.DTO_Rol;
+import com.backend.backend.Usuario.DTO.DTO_Response;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
+import com.backend.backend.Usuario.Usuario;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +36,12 @@ public class Rol_Controller {
     public ResponseEntity<List<Rol>> getAllRoles() {
         List<Rol> roles = rolService.getAllRoles();
         return ResponseEntity.ok(roles);
+    }
+
+    @GetMapping("/{id_rol}")
+    public ResponseEntity<Rol> getRolById(@PathVariable("id_rol") Integer id_rol) {
+        Rol rol = rolService.getRol(id_rol);
+        return ResponseEntity.ok(rol);
     }
 
 }
