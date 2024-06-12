@@ -1,6 +1,6 @@
 
 
 export const GLOBAL={
-    url:'http://localhost:8080',
+    url:'https://segundo-parcial-si2.onrender.com',
     
 }

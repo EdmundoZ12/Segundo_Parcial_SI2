@@ -81,6 +81,29 @@
                         <!--begin::Label-->
                         <label
                           class="col-lg-4 col-form-label required fw-semibold fs-6"
+                          >Modulo</label
+                        >
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-8">
+                          <!--begin::Row-->
+                          <select 
+                          class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                          [(ngModel)]="moduloID"
+                          (change)="cargarAulas()"
+                          >
+                          <option value="" selected disabled>Seleccionar</option>
+                          <option [value]="item.id" *ngFor="let item of modulos">{{item.nombre}}</option>
+                        </select>
+                         
+                          <!--end::Row-->
+                        </div>
+                        <!--end::Col-->
+                      </div>
+                      <div class="row mb-10">
+                        <!--begin::Label-->
+                        <label
+                          class="col-lg-4 col-form-label required fw-semibold fs-6"
                           >Materia</label
                         >
                         <!--end::Label-->
@@ -89,13 +112,10 @@
                           <!--begin::Row-->
                           <select 
                           class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
-                          [(ngModel)]="horarioCreate.materia"
+                          [(ngModel)]="horarioCreate.cod_materia"
                           >
                           <option value="" selected disabled>Seleccionar</option>
-                          <option value="Masculino">Masculino</option>
-                          <option value="Femenino">Femenino</option>
-                          <option value="Niños">Niño</option>
-                          <option value="Niñas">Niña</option>
+                          <option [value]="materiasA.cod" *ngFor="let materiasA of materias">{{materiasA.nombre}}</option>
                         </select>
                          
                           <!--end::Row-->
@@ -114,13 +134,10 @@
                           <!--begin::Row-->
                           <select 
                           class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
-                          [(ngModel)]="horario.genero"
+                          [(ngModel)]="horarioCreate.id_grupo"
                           >
                           <option value="" selected disabled>Seleccionar</option>
-                          <option value="Masculino">Masculino</option>
-                          <option value="Femenino">Femenino</option>
-                          <option value="Niños">Niño</option>
-                          <option value="Niñas">Niña</option>
+                          <option [value]="gruposA.id" *ngFor="let gruposA of grupos">{{gruposA.nombre}}</option>
                         </select>
                          
                           <!--end::Row-->
@@ -139,13 +156,10 @@
                           <!--begin::Row-->
                           <select 
                           class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
-                          [(ngModel)]="horario.genero"
+                          [(ngModel)]="horario.id_aula"
                           >
                           <option value="" selected disabled>Seleccionar</option>
-                          <option value="Masculino">Masculino</option>
-                          <option value="Femenino">Femenino</option>
-                          <option value="Niños">Niño</option>
-                          <option value="Niñas">Niña</option>
+                          <option [value]="aulasA.id" *ngFor="let aulasA of aulas">{{aulasA.nro}}</option>
                         </select>
                          
                           <!--end::Row-->
@@ -163,13 +177,13 @@
                             <!--begin::Col-->
                             <div class="col-lg-6 fv-row">
                               <input type="time" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Hora de Inicio" 
-                              [(ngModel)]="horarios.nombres"/>
+                              [(ngModel)]="horario.hora_inicio"/>
                             </div>
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-lg-6 fv-row">
                               <input type="time" class="form-control form-control-lg form-control-solid" placeholder="Hora Final" 
-                              [(ngModel)]="horarios.apellidos"  />
+                              [(ngModel)]="horario.hora_fin"  />
                             </div>
                             <!--end::Col-->
                           </div>
@@ -188,29 +202,42 @@
                         <div class="col-lg-8">
                           <!--begin::Row-->
                           <div class="input-group mb-7">
-                            <input
-                              type="text"
-                              class="form-control form-control-solid"
-                              placeholder="Dia" name="dia" [(ngModel)]="horarios.dia" (keyup.ENTER)="add()"
-                            />
+                            <select 
+                            class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                            [(ngModel)]="horario.dia"
+                            >
+                            <option value="" selected disabled>Seleccionar</option>
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miercoles">Miercoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                            <option value="Sabado">Sabado</option>
+                            
+                          </select>
+                          
                             <div class="input-group-append">
                               <button class="btn btn-dark" (click)="add()">agregar</button>
                             </div>
                           </div>
   
-                          <div class="table-responsive" *ngIf="horariosA.length >=1">
+                          <div class="table-responsive" *ngIf="horarios.length >=1">
                             <table
                               class="table table-striped table-row-dashed table-row-gray-300"
                             >
                               <thead style=" background: #181c32; color: white ;">
                                 <tr>
-                                  <th class="p-3">subCategoria</th>
+                                  <th class="p-3">Aula</th>
+                                  <th class="p-3">Horas</th>
+                                  <th class="p-3">dia</th>
                                   <th class="p-3">Quitar</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr *ngFor="let item of horariosA let idx=index">
-                                  <td class="p-3">{{item}}</td>
+                                <tr *ngFor="let item of horarios let idx=index">
+                                  <td class="p-3">{{item.id_aula}}</td>
+                                  <td class="p-3">{{item.hora_inicio}}-{{item.hora_fin}}</td>
+                                  <td class="p-3">{{item.dia}}</td>
                                   <td class="p-3">
                                     <code class="text-danger cursor-pointer"
                                     (click)="remove(idx)"
@@ -234,7 +261,7 @@
                         class="btn btn-dark"
                         (click)="registrar()"
                       >
-                        Crear Categoria
+                        Crear Horario
                       </button>
                       <button
                         *ngIf="btn_load"

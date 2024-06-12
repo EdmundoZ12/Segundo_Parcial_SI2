@@ -38,4 +38,8 @@ export class MateriaService {
     return this._http.get(this.url + '/api/materia', { headers: headers });
   }
 
+  createHorario(data: any, token: any): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.post(this.url + '/api/horario/create', data, { headers: headers });
+  }
 }
