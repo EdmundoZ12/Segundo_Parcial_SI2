@@ -9,13 +9,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class SidebarComponent {
   
- 
-  constructor(
-    
-  ) { }
+  user: any;
 
-  
-    
+  ngOnInit(): void {
+    this.loadUser();
+  }
 
-  
+  loadUser(): void {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      this.user = JSON.parse(userData);
+    } else {
+      this.user = null;
+    }
+  }
 }

@@ -39,7 +39,15 @@ export class LoginComponent {
             if(response.token){
               localStorage.setItem('token',response.token)
               localStorage.setItem('userID',this.usuario.nro_registro)
-              this._router.navigate(['/dashboard'])}
+              localStorage.setItem('user',JSON.stringify(response.user))
+              if(response.user.id_rol==2)
+               {this._router.navigate(['/areaPersonal'])}
+              else if(response.user.id_rol==1){
+                this._router.navigate(['/usuarios'])
+              } 
+              
+            
+            }
             
           }
           

@@ -46,4 +46,9 @@ export class MateriaService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this._http.get(this.url + '/api/materia/grupos', { headers: headers });
   }
+
+  obtenerHorarioGrupo(cod: any,idGrupo:any, token: any): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.url + `/api/horario/materia/${cod}/grupo/${idGrupo}`, { headers: headers });
+  }
 }

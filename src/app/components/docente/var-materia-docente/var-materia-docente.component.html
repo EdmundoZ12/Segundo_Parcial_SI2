@@ -1,0 +1,256 @@
+
+<div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+      <!--begin::Aside-->
+      <app-sidebar></app-sidebar>
+      <!--end::Aside-->
+      <!--begin::Wrapper-->
+      <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+        <!--begin::Header-->
+        <app-topbar></app-topbar>
+        <!--end::Header-->
+        <!--begin::Content-->
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+          <!--begin::Toolbar-->
+          <div class="toolbar" id="kt_toolbar">
+            <!--begin::Container-->
+            <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+              <!--begin::Page title-->
+              <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+                <!--begin::Title-->
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">dashboard
+                    <span class="h-20px border-gray-400 border-start ms-3 mx-2"></span>
+                    <ol class="breadcrumb text-muted fs-6 fw-semibold">
+                      
+                      <li class="breadcrumb-item pe-3 ">Materias</li>
+                    </ol>
+                  </h1>
+                <!--end::Title-->
+              </div>
+              <!--end::Page title-->
+              <!--begin::Actions-->
+              <div class="d-flex align-items-center py-1">
+                
+             
+                <!--end::Button-->
+              </div>
+              <!--end::Actions-->
+            </div>
+            <!--end::Container-->
+          </div>
+          <!--end::Toolbar-->
+          <!--begin::Post-->
+          <div class="post d-flex flex-column-fluid" id="kt_post">
+            <!--begin::Container-->
+            <div id="kt_content_container" class="container-xxl">
+                
+              <div class="row gy-5 g-xl-8">
+                <div class="col-12">
+                    <div class="card mb-5 mb-xl-5">
+                        <!--begin::Card header-->
+                        <div class="card-header border-0 pt-5">
+                            <!--begin::Card title-->
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fs-3 mb-1 fw-700">{{docente.nombre}} {{docente.apellido}}</span>
+                                <span class="text-muted mt-1 fw-semibold fs-7">MATERIAS</span>
+                            </h3>
+                            <div class="card-toolbar">
+                                <a [routerLink]="['/docentes/addmaterias']"   class="btn btn-dark">
+                                    Añadir Materia
+                                </a>
+                            </div>
+                            
+                        </div>
+                        <!--begin::Card header-->
+                        <div class="card-body pt-0">
+                    
+                            <!--begin::Seprator-->
+                            <div class="separator separator-dashed my-4"></div>
+                            <!--end::Seprator-->
+                    
+                    
+                           
+                    
+                            <!--begin::Seprator-->
+                            <div class="separator separator-dashed my-4"></div>
+                            <!--end::Seprator-->
+                    
+                    
+                            <div class="table-responsive">
+                                <!--begin::Table-->
+                                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" style="margin-bottom: 0px !important;">
+                                    <!--begin::Table head-->
+                                    
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody *ngIf="!load_data" >
+                                        
+                                       <ng-container *ngIf="materias.length >=1" >
+                                                <ng-container *ngFor="let item of materias |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <!--begin::Avatar-->
+                                                               
+                                                                <!--end::Avatar-->
+                                                                <!--begin::Name-->
+                                                                <div class="d-flex justify-content-start flex-column">
+                                                                    <a class="text-dark fw-bold text-hover-primary mb-1 fs-6">
+                                                                        {{item.nombre_materia}}
+                                                                          
+                                                                    </a>
+                                                                    <a class="text-hover-primary fw-semibold d-block fs-7">
+                                                                        <span class="svg-icon svg-icon-5 svg-icon-success ms-n1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M9.89557 13.4982L7.79487 11.2651C7.26967 10.7068 6.38251 10.7068 5.85731 11.2651C5.37559 11.7772 5.37559 12.5757 5.85731 13.0878L9.74989 17.2257C10.1448 17.6455 10.8118 17.6455 11.2066 17.2257L18.1427 9.85252C18.6244 9.34044 18.6244 8.54191 18.1427 8.02984C17.6175 7.47154 16.7303 7.47154 16.2051 8.02984L11.061 13.4982C10.7451 13.834 10.2115 13.834 9.89557 13.4982Z" fill="currentColor"/>
+                                                                            </svg>
+                                                                        </span>
+                                                                        {{item.cod_materia}}
+                                                                    </a>
+                                                                </div>
+                                                                <!--end::Name-->
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <!--begin::Avatar-->
+                                                               
+                                                                <!--end::Avatar-->
+                                                                <!--begin::Name-->
+                                                                <div class="d-flex justify-content-start flex-column">
+                                                                    <a class="text-dark fw-bold text-hover-primary mb-1 fs-6">
+                                                                        {{item.nombre_grupo}}
+                                                                          
+                                                                    </a>
+                                                                    
+                                                                </div>
+                                                                <!--end::Name-->
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <!--begin::Avatar-->
+                                                               
+                                                                <!--end::Avatar-->
+                                                                <!--begin::Name-->
+                                                                <div class="d-flex justify-content-start flex-column">
+                                                                    <a data-bs-toggle="modal" [attr.data-bs-target]="'#estadoModal'" (click)="setItem(item)" >
+                                                                        <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="25" height="28" viewBox="0 0 25 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path d="M7.40094 3.4401V2.10677C7.40033 1.76658 7.52977 1.43903 7.76277 1.19116C7.99577 0.943285 8.3147 0.793848 8.65427 0.773438H16.0009C16.3381 0.797099 16.6538 0.947953 16.884 1.19548C17.1142 1.44301 17.2418 1.76874 17.2409 2.10677V3.4401C17.2418 3.77813 17.1142 4.10386 16.884 4.35139C16.6538 4.59892 16.3381 4.74978 16.0009 4.77344H8.65427C8.3147 4.75303 7.99577 4.60359 7.76277 4.35572C7.52977 4.10785 7.40033 3.78029 7.40094 3.4401ZM24.0009 10.3068V19.9334C24.0168 20.8755 23.847 21.8114 23.5011 22.6878C23.1552 23.5642 22.6401 24.3639 21.9851 25.0412C21.3301 25.7185 20.5481 26.2601 19.6837 26.6351C18.8194 27.0101 17.8897 27.2111 16.9476 27.2268H7.08094C5.18074 27.2022 3.36795 26.4246 2.04054 25.0646C0.713134 23.7047 -0.0204132 21.8737 0.000939745 19.9734V10.3468C-0.0270515 8.61371 0.571086 6.92871 1.68552 5.60118C2.79996 4.27366 4.35589 3.39271 6.06761 3.1201V3.4401C6.06729 4.1337 6.33724 4.80013 6.82016 5.29799C7.30309 5.79585 7.96099 6.08596 8.65427 6.10677H16.0009C16.6919 6.08257 17.3464 5.79097 17.8265 5.29348C18.3066 4.79598 18.5747 4.13147 18.5743 3.4401V3.21344C20.1405 3.62092 21.5255 4.54049 22.5088 5.82584C23.4921 7.1112 24.0174 8.68849 24.0009 10.3068ZM7.80094 15.4134L10.9743 19.3334C11.0666 19.4457 11.1826 19.5362 11.314 19.5985C11.4454 19.6607 11.5889 19.6931 11.7343 19.6934C11.8856 19.6924 12.0345 19.6557 12.1689 19.5861C12.3033 19.5166 12.4193 19.4163 12.5076 19.2934L16.8543 13.4401C16.9828 13.2317 17.0357 12.9855 17.0041 12.7427C16.9726 12.4999 16.8585 12.2754 16.6809 12.1068C16.4748 11.9647 16.2224 11.9064 15.9748 11.9435C15.7272 11.9806 15.503 12.1105 15.3476 12.3068L11.7476 17.1468L9.33427 14.1601C9.17326 13.9701 8.94633 13.8479 8.69903 13.8183C8.45172 13.7886 8.20234 13.8536 8.00094 14.0001C7.79628 14.1676 7.66209 14.4059 7.62504 14.6677C7.58799 14.9296 7.65078 15.1958 7.80094 15.4134Z" fill="currentColor"/>
+                                                                            </svg>
+                                                                            </span>
+                                                                    </a>
+                                                                    
+                                                                    
+                                                                </div>
+                                                                <!--end::Name-->
+                                                            </div>
+                                                        </td>
+                                                        
+                                                       
+                                                    </tr>
+                                                </ng-container>
+                                       </ng-container>
+                                        <ng-container  *ngIf="materias.length ==0" >
+                                            <div data-kt-search-element="empty" class="text-center">
+                                                <!--begin::Icon-->
+                                                <div class="pt-10 pb-5">
+                                                    <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor"/>
+                                                        <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor"/>
+                                                        </svg>
+                                                        </span>
+                                                </div>
+                                                <!--end::Icon-->
+                                            
+                                                <!--begin::Message-->
+                                                <div class="pb-15 fw-semibold">
+                                                    <h3 class="text-gray-600 fs-5 mb-2">no se encontraron resultados</h3>
+                                                    <div class="text-muted fs-7">Vuelva a intentar con una consulta diferente</div>
+                                                </div>
+                                                <!--end::Message-->
+                                            </div>
+                                        </ng-container>
+                                    </tbody>
+                                    <tbody  *ngIf="load_data">
+                                        <tr>
+                                            <td class="text-center" colspan="4">
+                                                <div class="spinner-border" style="width: 3rem; height: 3rem; margin-top: 1.5rem;" role="status">
+                                                    <span class="sr-only">Loading...</span>
+                                                  </div>
+                                            </td>
+                                        </tr>
+                                    </tbody  >
+                                    <!--end::Table body-->
+                                </table>
+                                <!--end::Table-->
+                            </div> 
+                            
+                        </div>
+                        <div class="card-footer">
+                            <ngb-pagination [collectionSize]="materias.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" />
+                        </div>
+                    </div>
+              
+                </div>
+              </div>
+
+            </div>
+            <!--end::Container-->
+          </div>
+          <!--end::Post-->
+        </div>
+        <!--end::Content-->
+       
+      </div>
+      <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+  </div>
+
+  <div class="modal fade" tabindex="-1" id="estadoModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Horarios</h3>
+
+                <!--begin::Close-->
+                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+                    <span class="svg-icon svg-icon-muted svg-icon-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"/>
+                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"/>
+                        </svg>
+                        
+                        </span>
+                </div>
+                <!--end::Close-->
+            </div>
+
+            <div class="modal-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dia</th>
+                            <th>Horario</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of horarios">
+                            <td>{{item.dia}}</td>
+                            <td>{{item.horaInicio}} - {{item.horaFin}}</td>
+                            
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -33,6 +33,7 @@ import { MateriaDocentesComponent } from './components/docentes/materia-docentes
 import { DetalleDocentesComponent } from './components/docentes/detalle-docentes/detalle-docentes.component';
 import { VerDocenteComponent } from './components/areaPersonal/ver-docente/ver-docente.component';
 import { LicenciasComponent } from './components/areaPersonal/licencias/licencias.component';
+import { VarMateriaDocenteComponent } from './components/docente/var-materia-docente/var-materia-docente.component';
 
 
 
@@ -67,7 +68,8 @@ import { LicenciasComponent } from './components/areaPersonal/licencias/licencia
     MateriaDocentesComponent,
     DetalleDocentesComponent,
     VerDocenteComponent,
-    LicenciasComponent
+    LicenciasComponent,
+    VarMateriaDocenteComponent
    
 
   ],

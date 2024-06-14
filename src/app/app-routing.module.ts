@@ -27,6 +27,7 @@ import { DetalleDocentesComponent } from './components/docentes/detalle-docentes
 import { IndexAreaComponent } from './components/areaPersonal/index-area/index-area.component';
 import { VerDocenteComponent } from './components/areaPersonal/ver-docente/ver-docente.component';
 import { LicenciasComponent } from './components/areaPersonal/licencias/licencias.component';
+import { VarMateriaDocenteComponent } from './components/docente/var-materia-docente/var-materia-docente.component';
 
 
 
@@ -67,6 +68,7 @@ const routes: Routes = [
   {path:'areaPersonal',component:IndexAreaComponent,canActivate:[AuthGuard]},
   {path:'verAsistencias/:tipo',component:VerDocenteComponent,canActivate:[AuthGuard]},
   {path:'licencias',component:LicenciasComponent,canActivate:[AuthGuard]},
+  {path:'materiasDocente',component:VarMateriaDocenteComponent,canActivate:[AuthGuard]}
   
 ];
 
