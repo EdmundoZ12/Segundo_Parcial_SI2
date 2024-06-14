@@ -1,6 +1,7 @@
 package com.backend.backend.Asistencia;
 
 import com.backend.backend.Asistencia.DTO.DTO_Asistencia;
+import com.backend.backend.Asistencia.DTO.DTO_Licencia;
 import com.backend.backend.Docente.Docente;
 import com.backend.backend.Docente.DocenteRepository;
 import com.backend.backend.Gestion.DTO.DTO_Gestion;
@@ -90,5 +91,29 @@ public class Asistencia_Service {
             }
         }
 
+    }
+
+    public void crearLicencia(DTO_Licencia dtoLicencia) {
+        DTO_Gestion gestion = gestionService.getLastGestion();
+
+        if (dtoLicencia.getFecha() == null || dtoLicencia.getMotivo() == null) {
+            throw new RuntimeException("Faltan datos a Registrar");
+        }
+        Docente docente = docenteRepository.getReferenceById(dtoLicencia.getNro_registro());
+        GestionDocente gestionDocente = gestionDocenteRepository.findByDocenteAndCodMateriaAndIdGrupoAndIdGestion(docente, dtoLicencia.getCod_materia(), dtoLicencia.getId_grupo(), gestion.getId());
+        if (!asistenciaRepository.existsByFechaAndGestionDocente_Docente_NroRegistroAndGestionDocente_CodMateriaAndGestionDocente_IdGrupoAndGestionDocente_IdGestion(dtoLicencia.getFecha(), docente.getNroRegistro(), dtoLicencia.getCod_materia(), dtoLicencia.getId_grupo(), gestion.getId())) {
+            TipoAsistencia tipoAsistencia = tipoAsistenciaRepository.getReferenceById(4);
+
+            Asistencia asistencia = Asistencia.builder()
+                    .tipoAsistencia(tipoAsistencia)
+                    .gestionDocente(gestionDocente)
+                    .fecha(dtoLicencia.getFecha())
+                    .horaEntrada(null)
+                    .motivo(dtoLicencia.getMotivo())
+                    .modalidad(null)
+                    .docente(docente)
+                    .build();
+            asistenciaRepository.save(asistencia);
+        }
     }
 }

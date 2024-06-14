@@ -40,6 +40,7 @@ com\backend\backend\Usuario\Usuario.class
 com\backend\backend\Horario\Horario_Service.class
 com\backend\backend\Usuario\DTO\DTO.class
 com\backend\backend\Carrera\Carrera.class
+com\backend\backend\Asistencia\DTO\DTO_Licencia$DTO_LicenciaBuilder.class
 com\backend\backend\Config\SecurityConfig.class
 com\backend\backend\Aula\Aula_Repository.class
 com\backend\backend\Tipo_Carrera\TipoCarrera_Controller.class
@@ -68,11 +69,13 @@ com\backend\backend\Rol\Rol$RolBuilder.class
 com\backend\backend\Tipo_Periodo\TipoPeriodo$TipoPeriodoBuilder.class
 com\backend\backend\Carrera\DTO\DTO_Carrera_Materias$DTO_Carrera_MateriasBuilder.class
 com\backend\backend\Gestion\DTO\DTO_Gestion.class
+com\backend\backend\Gest_Doc_Mate\DTO\DTO_AsistenciaDocente$DTO_AsistenciaDocenteBuilder.class
 com\backend\backend\Modalidad_Carrera\ModalidadCarreraId$ModalidadCarreraIdBuilder.class
 com\backend\backend\Modalidad\DTO\DTO_Modalidad_Response.class
 com\backend\backend\Gestion_Carrera\GestionCarreraID$GestionCarreraIDBuilder.class
 com\backend\backend\Gest_Doc_Mate\GestionDocente_Repository.class
 com\backend\backend\Horario\DTO\DTO_Horario$DTO_HorarioBuilder.class
+com\backend\backend\Auth\DTO\DTO_User_Res$DTO_User_ResBuilder.class
 com\backend\backend\Tipo_Carrera\TipoCarrera_Service.class
 com\backend\backend\Asistencia\Asistencia.class
 com\backend\backend\Carrera\Carrera_Controller.class
@@ -108,6 +111,7 @@ com\backend\backend\Usuario\Usuario_Controller.class
 com\backend\backend\Tipo_Asistencia\TipoAsistencia_Service.class
 com\backend\backend\Materia_Grupo\MateriaGrupoID.class
 com\backend\backend\Administrador\Administrador.class
+com\backend\backend\Auth\DTO\DTO_User_Res.class
 com\backend\backend\Horario\Horario_Repository.class
 com\backend\backend\Carrera_Materia\CarreraMateriID$CarreraMateriIDBuilder.class
 com\backend\backend\Rol\DTO\DTO_Rol$DTO_RolBuilder.class
@@ -137,6 +141,7 @@ com\backend\backend\Carrera\DTO\DTO_Carrera_Response.class
 com\backend\backend\Gestion\Gestion_Controller.class
 com\backend\backend\Tipo_Carrera\TipoCarrera$TipoCarreraBuilder.class
 com\backend\backend\Gestion\DTO\DTO_Gestion$DTO_GestionBuilder.class
+com\backend\backend\Asistencia\DTO\DTO_Licencia.class
 com\backend\backend\Gestion_Carrera\GestionCarreraID.class
 com\backend\backend\Gest_Doc_Mate\DTO\DTO_Materias.class
 com\backend\backend\Aula\Aula$AulaBuilder.class
@@ -158,6 +163,7 @@ com\backend\backend\Gestion\DTO\DTO_Gestion_Response$DTO_Gestion_ResponseBuilder
 com\backend\backend\Gest_Doc_Mate\GestionDocenteID$GestionDocenteIDBuilder.class
 com\backend\backend\Modulo\Modulo.class
 com\backend\backend\Rol\DTO\DTO_Rol.class
+com\backend\backend\Gest_Doc_Mate\DTO\DTO_AsistenciaDocente.class
 com\backend\backend\Modalidad\Modalidad.class
 com\backend\backend\Gest_Doc_Mate\DTO\DTO_Horarios_Cercas.class
 com\backend\backend\Modulo\DTO\DTO_Modulo.class

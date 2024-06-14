@@ -5,6 +5,7 @@ D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Pa
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Asistencia\Asistencia_Repository.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Asistencia\Asistencia_Service.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Asistencia\DTO\DTO_Asistencia.java
+D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Asistencia\DTO\DTO_Licencia.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Aula\Aula.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Aula\Aula_Controller.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Aula\Aula_Repository.java
@@ -14,6 +15,7 @@ D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Pa
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Auth\AuthController.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Auth\AuthResponse.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Auth\AuthService.java
+D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Auth\DTO\DTO_User_Res.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Auth\LoginRequest.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Auth\RegisterRequest.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\BackendApplication.java
@@ -33,6 +35,7 @@ D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Pa
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Docente\Docente.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Docente\DocenteRepository.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Gest_Doc_Mate\DTO\DTO_Asignar_Gestion_Docente.java
+D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Gest_Doc_Mate\DTO\DTO_AsistenciaDocente.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Gest_Doc_Mate\DTO\DTO_Horarios_Cercas.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Gest_Doc_Mate\DTO\DTO_Materias.java
 D:\E.J.Z.R\Universidad\7.-Septimo Semestre\Sistemas de Informacion II\Segundo Parcial\sistema\Sistema-AsistenciaDocentes\backend\src\main\java\com\backend\backend\Gest_Doc_Mate\GestionDocente.java

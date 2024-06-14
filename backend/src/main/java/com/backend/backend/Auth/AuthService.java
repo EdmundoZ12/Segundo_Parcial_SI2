@@ -1,5 +1,6 @@
 package com.backend.backend.Auth;
 
+import com.backend.backend.Auth.DTO.DTO_User_Res;
 import com.backend.backend.JWT.JwtService;
 import com.backend.backend.Usuario.Usuario;
 import com.backend.backend.Usuario.Usuario_Repository;
@@ -27,9 +28,16 @@ public class AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getNro_registro(), request.getPassword()));
         UserDetails user = userRepository.findByNroRegistro(request.getNro_registro()).orElseThrow();
         String token = jwtService.getToken(user);
+        Usuario usuario=userRepository.getReferenceById(user.getUsername());
         System.out.println(token);
+        DTO_User_Res userRes= DTO_User_Res.builder()
+                .nro_registro(user.getUsername())
+                .nombre(usuario.getNombre())
+                .id_rol(usuario.getRol().getId())
+                .build();
         return AuthResponse.builder()
                 .token(token)
+                .user(userRes)
                 .build();
     }
 

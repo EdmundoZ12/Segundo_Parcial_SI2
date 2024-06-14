@@ -19,6 +19,7 @@ public interface Asistencia_Repository extends JpaRepository<Asistencia, Integer
 
     boolean existsByFechaAndHoraEntrada(LocalTime horaEntrada, Date fecha);
 
+
     List<Asistencia> findByGestionDocente_CodMateriaAndGestionDocente_IdGrupoAndGestionDocente_IdGestion(String codMateria, Integer idGrupo, Integer idGestion);
 
     boolean existsByFechaAndHoraEntradaAndGestionDocente_Docente_NroRegistroAndGestionDocente_CodMateriaAndGestionDocente_IdGrupoAndGestionDocente_IdGestion(
@@ -26,4 +27,8 @@ public interface Asistencia_Repository extends JpaRepository<Asistencia, Integer
 
     boolean existsByFechaAndGestionDocente_Docente_NroRegistroAndGestionDocente_CodMateriaAndGestionDocente_IdGrupoAndGestionDocente_IdGestion(
             Date fecha, String nroRegistro, String codMateria, Integer idGrupo, Integer idGestion);
+
+
+    List<Asistencia> findByTipoAsistencia_IdAndDocente_NroRegistro(Integer idTipoAsistencia, String nroRegistro);
+
 }

@@ -1,6 +1,7 @@
 package com.backend.backend.Asistencia;
 
 import com.backend.backend.Asistencia.DTO.DTO_Asistencia;
+import com.backend.backend.Asistencia.DTO.DTO_Licencia;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,20 @@ public class Asistencia_Controller {
         try {
             asistenciaService.crearAsistencia(dtoAsistencia);
             return ResponseEntity.status(200).body("Asistencia marcada con exito");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse(e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorResponse("Error al crear el usuario: " + e.getMessage()));
+        }
+    }
+
+    @PostMapping(value = "/create/licencia")
+    public ResponseEntity<?> crearLicensia(@RequestBody DTO_Licencia dtoLicencia) {
+        try {
+            asistenciaService.crearLicencia(dtoLicencia);
+            return ResponseEntity.status(200).body("Licensia creada con exito");
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new ErrorResponse(e.getMessage()));

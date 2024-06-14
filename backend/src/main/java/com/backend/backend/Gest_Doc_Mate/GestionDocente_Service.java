@@ -1,10 +1,12 @@
 package com.backend.backend.Gest_Doc_Mate;
 
+import com.backend.backend.Asistencia.Asistencia;
 import com.backend.backend.Asistencia.Asistencia_Repository;
 import com.backend.backend.Asistencia.Asistencia_Service;
 import com.backend.backend.Asistencia.DTO.DTO_Asistencia;
 import com.backend.backend.Docente.Docente;
 import com.backend.backend.Docente.DocenteRepository;
+import com.backend.backend.Gest_Doc_Mate.DTO.DTO_AsistenciaDocente;
 import com.backend.backend.Gestion.Gestion;
 import com.backend.backend.Gestion.Gestion_Repository;
 import com.backend.backend.Gest_Doc_Mate.DTO.DTO_Asignar_Gestion_Docente;
@@ -98,6 +100,7 @@ public class GestionDocente_Service {
         Gestion gestion = gestionRepository.findLastGestion();
         String dia = zonaHorariaService.obtenerDiaSemanaEnEspañol();
         LocalTime hora_inicio = zonaHorariaService.obtenerHoraEnZonaHoraria();
+        System.out.println(dia);
         Date fecha = zonaHorariaService.obtenerFecha();
 //        String dia = "Lunes";
 //        LocalTime hora_inicio = LocalTime.parse("11:29", DateTimeFormatter.ofPattern("H:mm"));
@@ -139,6 +142,78 @@ public class GestionDocente_Service {
             }
         }
         return horarioList;
+    }
+
+    public List<DTO_AsistenciaDocente> asistenciaDocente(String nroRegistro) {
+        List<Asistencia> asistencias = asistenciaRepository.findByTipoAsistencia_IdAndDocente_NroRegistro(1, nroRegistro);
+        List<DTO_AsistenciaDocente> lista = new ArrayList<>();
+        for (Asistencia asistencia : asistencias) {
+            String nombre = asistencia.getGestionDocente().getMateriaGrupo().getMateria().getNombre() + " grupo: " + asistencia.getGestionDocente().getMateriaGrupo().getGrupo().getNombre();
+            DTO_AsistenciaDocente dtoAsistenciaDocente = DTO_AsistenciaDocente.builder()
+                    .nombre_materia(nombre)
+                    .hora(asistencia.getHoraEntrada())
+                    .fecha(asistencia.getFecha())
+                    .motivo(asistencia.getMotivo())
+                    .modalidad(asistencia.getModalidad())
+                    .build();
+            lista.add(dtoAsistenciaDocente);
+        }
+
+        return  lista;
+    }
+
+    public List<DTO_AsistenciaDocente> faltasDocente(String nroRegistro) {
+        List<Asistencia> asistencias = asistenciaRepository.findByTipoAsistencia_IdAndDocente_NroRegistro(3, nroRegistro);
+        List<DTO_AsistenciaDocente> lista = new ArrayList<>();
+        for (Asistencia asistencia : asistencias) {
+            String nombre = asistencia.getGestionDocente().getMateriaGrupo().getMateria().getNombre() + " grupo: " + asistencia.getGestionDocente().getMateriaGrupo().getGrupo().getNombre();
+            DTO_AsistenciaDocente dtoAsistenciaDocente = DTO_AsistenciaDocente.builder()
+                    .nombre_materia(nombre)
+                    .hora(asistencia.getHoraEntrada())
+                    .fecha(asistencia.getFecha())
+                    .motivo(asistencia.getMotivo())
+                    .modalidad(asistencia.getModalidad())
+                    .build();
+            lista.add(dtoAsistenciaDocente);
+        }
+
+        return  lista;
+    }
+
+    public List<DTO_AsistenciaDocente> retrasosDocente(String nroRegistro) {
+        List<Asistencia> asistencias = asistenciaRepository.findByTipoAsistencia_IdAndDocente_NroRegistro(2, nroRegistro);
+        List<DTO_AsistenciaDocente> lista = new ArrayList<>();
+        for (Asistencia asistencia : asistencias) {
+            String nombre = asistencia.getGestionDocente().getMateriaGrupo().getMateria().getNombre() + " grupo: " + asistencia.getGestionDocente().getMateriaGrupo().getGrupo().getNombre();
+            DTO_AsistenciaDocente dtoAsistenciaDocente = DTO_AsistenciaDocente.builder()
+                    .nombre_materia(nombre)
+                    .hora(asistencia.getHoraEntrada())
+                    .fecha(asistencia.getFecha())
+                    .motivo(asistencia.getMotivo())
+                    .modalidad(asistencia.getModalidad())
+                    .build();
+            lista.add(dtoAsistenciaDocente);
+        }
+
+        return  lista;
+    }
+
+    public List<DTO_AsistenciaDocente> licenciasDocente(String nroRegistro) {
+        List<Asistencia> asistencias = asistenciaRepository.findByTipoAsistencia_IdAndDocente_NroRegistro(4, nroRegistro);
+        List<DTO_AsistenciaDocente> lista = new ArrayList<>();
+        for (Asistencia asistencia : asistencias) {
+            String nombre = asistencia.getGestionDocente().getMateriaGrupo().getMateria().getNombre() + " grupo: " + asistencia.getGestionDocente().getMateriaGrupo().getGrupo().getNombre();
+            DTO_AsistenciaDocente dtoAsistenciaDocente = DTO_AsistenciaDocente.builder()
+                    .nombre_materia(nombre)
+                    .hora(asistencia.getHoraEntrada())
+                    .fecha(asistencia.getFecha())
+                    .motivo(asistencia.getMotivo())
+                    .modalidad(asistencia.getModalidad())
+                    .build();
+            lista.add(dtoAsistenciaDocente);
+        }
+
+        return  lista;
     }
 
 
