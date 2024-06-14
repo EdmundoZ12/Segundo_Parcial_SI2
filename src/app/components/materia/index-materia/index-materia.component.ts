@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MateriaService } from '../../../services/materia.service';
-
+declare var toastr:any;
 @Component({
   selector: 'app-index-materia',
   templateUrl: './index-materia.component.html',
@@ -35,6 +35,7 @@ export class IndexMateriaComponent {
        this.load_data=false
       },
       error => {
+
         console.log(error);
       }
     );

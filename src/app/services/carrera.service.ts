@@ -33,5 +33,18 @@ export class CarreraService {
     return this._http.get(this.url+'/api/modalidad',{headers:headers})
   }
   
+  añadirMaterias(data:any,token:any):Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.post(this.url+'/api/carrera/materias',data,{headers:headers})
+  }
 
+  getMateriasPorCarrera(id:any,token:any):Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.url+'/api/carrera/materias/'+id,{headers:headers})
+  }
+
+  getCarrera(id:any,token:any):Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.url+'/api/carrera/'+id,{headers:headers})
+  }
 }

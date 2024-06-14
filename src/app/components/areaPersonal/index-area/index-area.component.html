@@ -1,0 +1,226 @@
+
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="page d-flex flex-row flex-column-fluid">
+    <!--begin::Aside-->
+    <app-sidebar></app-sidebar>
+    <!--end::Aside-->
+    <!--begin::Wrapper-->
+    <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+      <!--begin::Header-->
+      <app-topbar></app-topbar>
+      <!--end::Header-->
+      <!--begin::Content-->
+      <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Toolbar-->
+        <div class="toolbar" id="kt_toolbar">
+          <!--begin::Container-->
+          <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+            <!--begin::Page title-->
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+              <!--begin::Title-->
+              <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Dashboard
+              <!--begin::Separator-->
+              <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
+              <!--end::Separator-->
+              <!--begin::Description-->
+              <small class="text-muted fs-7 fw-bold my-1 ms-1">#XRS-45670</small>
+              <!--end::Description--></h1>
+              <!--end::Title-->
+            </div>
+            <!--end::Page title-->
+            <!--begin::Actions-->
+            <div class="d-flex align-items-center py-1">
+              
+            
+              <!--end::Button-->
+            </div>
+            <!--end::Actions-->
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::Toolbar-->
+        <!--begin::Post-->
+        <div class="post d-flex flex-column-fluid" id="kt_post">
+          <!--begin::Container-->
+          <div id="kt_content_container" class="container-xxl">
+              
+            <div class="row gy-5 g-xl-8">
+              <div class="col-12">
+                  <div class="card h-xl-100">
+                      <!--begin::Card header-->
+                      <div class="card-header py-7">
+                          <h3 class="card-title align-items-start flex-column">
+                              <span class="card-label  text-gray-800 fw-700">Asistencia</span>
+                              <span class="text-gray-400 mt-1 fw-semibold fs-6 d-none d-sm-block">
+                                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, laboriosam.
+                              </span>
+                          </h3>
+                          <div class="card-toolbar">
+                            <a [routerLink]="['/verAsistencias/Asistencias']"   class="btn btn-primary">
+                                Ver Control
+                            </a>
+                            <a [routerLink]="['/licencias']"   class="btn btn-dark">
+                                Solicitar Licencia
+                            </a>
+
+                            
+                        </div>
+                          <!--end::Title-->
+                  
+                          <!--begin::Create campaign button-->
+                         
+                          <!--end::Create campaign button-->
+                      </div>
+                      <!--end::Card header-->
+                     
+                      <!--begin::Card body-->
+                      <div class="card-body pt-4">
+                              
+                          <div class="d-flex justify-content-between" style="    margin-bottom: 2rem !important;">
+                             
+                  
+                              <div class="d-flex justify-content-between">
+                                  
+                                  
+                                 
+                                  <!--end::Menu-->
+                              </div>
+                              
+                          </div>
+                          
+                          
+                      
+                          <!--end::Input group-->
+                  
+                          <!--begin::Seprator-->
+                          <div class="separator separator-dashed my-5"></div>
+                          <!--end::Seprator-->
+                  
+                          <div class="table-responsive">
+                              <table class="table align-middle table-row-dashed fs-6 gy-5" style="margin-bottom: 0px !important;">
+                                  <!--begin::Table body-->
+                                  <tbody *ngIf="!loadData"  class="fw-semibold text-gray-600" >
+                                      <ng-container *ngFor="let item of materias | slice:(page-1) * pageSize: (page-1) * pageSize+pageSize ; let idx=index " >
+                                          <tr >
+                                              <!--begin::Category=-->
+                                              <td colspan="1" class="min-w-200px">
+                                                  <div class="d-flex">
+
+                                                      <div class="ms-5" style="max-width: 300px !important">
+                                                          <!--begin::Title-->
+                                                          <a class="text-gray-800 fs-6 fw-bold text-1 fw-600 cursor-pointer" style="font-size: 1rem!important; font-weight: 600 !important;">
+                                                            {{item.nombre}}
+                                                          </a>
+                                                          <br>
+                                                        
+                                                          
+                                                      </div>
+                                                  </div>
+                                              </td>
+                                              <td>
+                                                  <div  class="m-0">                            
+                                                      <span class="fw-semibold text-gray-500 d-block fs-8">Dia</span>
+                                                      <code>
+                                                          {{item.dia}}
+                                                      </code>
+                                                  </div>
+                                              </td>
+                                              <td>
+                                                <div  class="m-0">                            
+                                                    <span class="fw-semibold text-gray-500 d-block fs-8">Hora Inicio</span>
+                                                    <code>
+                                                        {{item.horaInicio}}
+                                                    </code>
+                                                </div>
+                                            </td>
+                                            <td>
+                                              <div  class="m-0">                            
+                                                  <span class="fw-semibold text-gray-500 d-block fs-8">Hora Fin</span>
+                                                  <code>
+                                                      {{item.horaFin}}
+                                                  </code>
+                                              </div>
+                                          </td>
+                                          <td class="text-end">
+                                            <button (click)="setAsistencia(item)"   class="btn btn-sm btn-light">Asistencia</button>
+                                        </td>
+                                            
+                                              <td  class="text-end min-w-150px">
+                                                  <a class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px active" *ngIf="!item.visible" (click)="item.visible=true" >
+                                                      <span class="svg-icon svg-icon-muted svg-icon-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                          <rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1" transform="rotate(-90 11 18)" fill="currentColor"/>
+                                                          <rect x="6" y="11" width="12" height="2" rx="1" fill="currentColor"/>
+                                                          </svg></span>
+                                                  </a>
+                                                  <a class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px active" *ngIf="item.visible" (click)="item.visible=false">
+                                                      <span class="svg-icon svg-icon-muted svg-icon-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                          <rect x="6" y="11" width="12" height="2" rx="1" fill="currentColor"/>
+                                                          </svg>
+                                                          </span>
+                                                  </a>
+                                                  <!--end::Menu-->
+                                              </td>
+                                             
+                                              <!--end::Action=-->
+                                          </tr>
+  
+                                          <ng-container *ngIf="item.visible" >
+                                              <tr class="" >
+                                                  <td  style="padding-left: 1rem !important;">
+                                                      <div class="d-flex align-items-center gap-3">
+                                                          
+                                                          <div class="d-flex flex-column text-muted">
+                                                              <a  class="text-gray-800 text-hover-primary fw-bold" >Motivos: </a>
+                                                             
+                                                          </div>
+                                                      </div>
+                                                  </td>
+                                                  <td>
+                                                      <div class="m-0">                            
+                                                          <input type="text">
+                                                      </div>
+                                                  </td>
+                                                  <td class="text-end">
+                                                      <button class="btn btn-sm btn-light">enviar</button>
+                                                  </td>
+                                              </tr>
+                                          </ng-container>
+                                      </ng-container>
+                                  </tbody>
+                                  <!--end::Table body-->
+                                  <tbody *ngIf="loadData" >
+                                      <tr>
+                                          <td colspan="4">
+                                              <div class="py-10 text-center pb-5">
+                                                  <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                                                      <span class="sr-only">Loading...</span>
+                                                  </div>
+                                              </div>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                      <!--end::Card body-->
+                      <div class="card-footer" >
+                          <ngb-pagination [collectionSize]="asistencias.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" aria-label="Default pagination"></ngb-pagination>
+                      </div>
+                  </div>
+            
+              </div>
+            </div>
+
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::Post-->
+      </div>
+      <!--end::Content-->
+     
+    </div>
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
+</div>

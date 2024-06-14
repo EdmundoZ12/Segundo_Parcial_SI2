@@ -25,6 +25,14 @@ import { IndexGrupoComponent } from './components/grupo/index-grupo/index-grupo.
 import { IndexMateriaComponent } from './components/materia/index-materia/index-materia.component';
 import { CreateMateriaComponent } from './components/materia/create-materia/create-materia.component';
 import { CreateGrupoComponent } from './components/grupo/create-grupo/create-grupo.component';
+import { AddMateriaCarreraComponent } from './components/carrera/add-materia-carrera/add-materia-carrera.component';
+import { MateriaCarreraComponent } from './components/carrera/materia-carrera/materia-carrera.component';
+import { IndexAreaComponent } from './components/areaPersonal/index-area/index-area.component';
+import { IndexDocentesComponent } from './components/docentes/index-docentes/index-docentes.component';
+import { MateriaDocentesComponent } from './components/docentes/materia-docentes/materia-docentes.component';
+import { DetalleDocentesComponent } from './components/docentes/detalle-docentes/detalle-docentes.component';
+import { VerDocenteComponent } from './components/areaPersonal/ver-docente/ver-docente.component';
+import { LicenciasComponent } from './components/areaPersonal/licencias/licencias.component';
 
 
 
@@ -51,7 +59,15 @@ import { CreateGrupoComponent } from './components/grupo/create-grupo/create-gru
     IndexGrupoComponent,
     IndexMateriaComponent,
     CreateMateriaComponent,
-    CreateGrupoComponent
+    CreateGrupoComponent,
+    AddMateriaCarreraComponent,
+    MateriaCarreraComponent,
+    IndexAreaComponent,
+    IndexDocentesComponent,
+    MateriaDocentesComponent,
+    DetalleDocentesComponent,
+    VerDocenteComponent,
+    LicenciasComponent
    
 
   ],

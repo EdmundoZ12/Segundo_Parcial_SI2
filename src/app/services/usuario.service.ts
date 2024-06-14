@@ -43,6 +43,17 @@ export class UsuarioService {
     return this._http.get(this.url+'/api/usuario/'+id,{headers:headers})
   }
 
+
+  asignarDocenteMateria(data:any,token:any):Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.post(this.url+'/api/docente-materia/create',data,{headers:headers})
+  } 
+
+  obtenerDocenteMateria(id:any,token:any):Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.get(this.url+'/api/docente-materia/materias/'+id,{headers:headers})
+  }
+
   EstaAutenticado(){
     try {
       

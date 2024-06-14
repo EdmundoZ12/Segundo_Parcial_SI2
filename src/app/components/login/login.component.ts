@@ -38,6 +38,7 @@ export class LoginComponent {
             console.log(response)
             if(response.token){
               localStorage.setItem('token',response.token)
+              localStorage.setItem('userID',this.usuario.nro_registro)
               this._router.navigate(['/dashboard'])}
             
           }

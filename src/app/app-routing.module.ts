@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,6 +19,14 @@ import { CreateGrupoComponent } from './components/grupo/create-grupo/create-gru
 import { IndexMateriaComponent } from './components/materia/index-materia/index-materia.component';
 import { CreateMateriaComponent } from './components/materia/create-materia/create-materia.component';
 import { AuthGuard } from './guards/auth.guard';
+import { MateriaCarreraComponent } from './components/carrera/materia-carrera/materia-carrera.component';
+import { AddMateriaCarreraComponent } from './components/carrera/add-materia-carrera/add-materia-carrera.component';
+import { IndexDocentesComponent } from './components/docentes/index-docentes/index-docentes.component';
+import { MateriaDocentesComponent } from './components/docentes/materia-docentes/materia-docentes.component';
+import { DetalleDocentesComponent } from './components/docentes/detalle-docentes/detalle-docentes.component';
+import { IndexAreaComponent } from './components/areaPersonal/index-area/index-area.component';
+import { VerDocenteComponent } from './components/areaPersonal/ver-docente/ver-docente.component';
+import { LicenciasComponent } from './components/areaPersonal/licencias/licencias.component';
 
 
 
@@ -38,7 +46,8 @@ const routes: Routes = [
 
   {path:'carrera',component:IndexCarreraComponent,canActivate:[AuthGuard]},
   {path:'carrera/create',component:CreateCarreraComponent,canActivate:[AuthGuard]},
-  
+  {path:'carrera/materia/:id',component:MateriaCarreraComponent,canActivate:[AuthGuard]},
+  {path:'carrera/materia/addmateria/:id', component:AddMateriaCarreraComponent, canActivate:[AuthGuard]},
   {path:'gestion',component:IndexGestionComponent,canActivate:[AuthGuard]},
   {path:'gestion/create',component:CreateGestionComponent,canActivate:[AuthGuard]},
 
@@ -50,6 +59,14 @@ const routes: Routes = [
 
   {path:'materia',component:IndexMateriaComponent,canActivate:[AuthGuard]},
   {path:'materia/create',component:CreateMateriaComponent,canActivate:[AuthGuard]},
+
+  {path:'docentes',component:IndexDocentesComponent,canActivate:[AuthGuard]},
+  {path:'docentes/addmaterias',component:MateriaDocentesComponent,canActivate:[AuthGuard]},
+  {path:'docentes/detalle/:id',component:DetalleDocentesComponent,canActivate:[AuthGuard]},
+
+  {path:'areaPersonal',component:IndexAreaComponent,canActivate:[AuthGuard]},
+  {path:'verAsistencias/:tipo',component:VerDocenteComponent,canActivate:[AuthGuard]},
+  {path:'licencias',component:LicenciasComponent,canActivate:[AuthGuard]},
   
 ];
 
