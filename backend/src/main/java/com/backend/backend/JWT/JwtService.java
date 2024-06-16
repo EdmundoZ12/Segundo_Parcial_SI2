@@ -1,10 +1,13 @@
 package com.backend.backend.JWT;
 
+import com.backend.backend.Usuario.Usuario;
+import com.backend.backend.Usuario.Usuario_Repository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +16,11 @@ import java.util.*;
 import java.util.function.Function;
 
 @Service
+@RequiredArgsConstructor
 public class JwtService {
 
     private static final String SECRET_KEY = "586E3272357538782F413F4428472B4B6250655368566B597033733676397924";
+    private final Usuario_Repository usuarioRepository;
 
     public String getToken(UserDetails user) {
         return getToken(new HashMap<>(), user);
@@ -23,7 +28,9 @@ public class JwtService {
 
     private String getToken(Map<String, String> extraClaims, UserDetails user) {
         // Añadir el número de registro como claim personalizada
+        Usuario usuario = usuarioRepository.getReferenceById(user.getUsername());
         extraClaims.put("nro_registro", user.getUsername());
+        extraClaims.put("nombre", usuario.getNombre());
         // Establecer la fecha de expiración del token (un día desde ahora)
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_MONTH, 1); // Agregar un día
