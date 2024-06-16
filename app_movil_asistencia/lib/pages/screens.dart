@@ -1,0 +1,1 @@
+export 'package:app_movil_asistencia/pages/home/home_screen1.dart';
