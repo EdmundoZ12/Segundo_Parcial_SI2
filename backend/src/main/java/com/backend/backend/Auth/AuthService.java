@@ -29,7 +29,6 @@ public class AuthService {
         UserDetails user = userRepository.findByNroRegistro(request.getNro_registro()).orElseThrow();
         String token = jwtService.getToken(user);
         Usuario usuario=userRepository.getReferenceById(user.getUsername());
-        System.out.println(token);
         DTO_User_Res userRes= DTO_User_Res.builder()
                 .nro_registro(user.getUsername())
                 .nombre(usuario.getNombre())
