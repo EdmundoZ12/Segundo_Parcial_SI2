@@ -106,7 +106,7 @@
                                         <ng-container *ngFor="let item of materias | slice:(page-1) * pageSize: (page-1) * pageSize+pageSize ; let idx=index " >
                                             <tr >
                                                 <!--begin::Category=-->
-                                                <td colspan="1" class="min-w-200px">
+                                                <td  class="min-w-200px">
                                                     <div class="d-flex">
   
                                                         <div class="ms-5" style="max-width: 300px !important">
@@ -144,21 +144,16 @@
                                                     </code>
                                                 </div>
                                             </td>
-                                            <td class="text-end">
+                                            <td class="m-0">
                                               <button (click)="setAsistencia(item)"   class="btn btn-sm btn-light">Asistencia</button>
                                           </td>
                                               
-                                                <td  class="text-end min-w-150px">
+                                                <td  class=" min-w-150px">
                                                     <a class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px active" *ngIf="!item.visible" (click)="item.visible=true" >
-                                                        <span class="svg-icon svg-icon-muted svg-icon-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1" transform="rotate(-90 11 18)" fill="currentColor"/>
-                                                            <rect x="6" y="11" width="12" height="2" rx="1" fill="currentColor"/>
-                                                            </svg></span>
+                                                        <span class="svg-icon svg-icon-muted svg-icon-3"> Virtual </span>
                                                     </a>
                                                     <a class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px active" *ngIf="item.visible" (click)="item.visible=false">
-                                                        <span class="svg-icon svg-icon-muted svg-icon-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <rect x="6" y="11" width="12" height="2" rx="1" fill="currentColor"/>
-                                                            </svg>
+                                                        <span class="svg-icon svg-icon-muted svg-icon-3"> Virtual
                                                             </span>
                                                     </a>
                                                     <!--end::Menu-->
@@ -180,11 +175,11 @@
                                                     </td>
                                                     <td>
                                                         <div class="m-0">                            
-                                                            <input type="text">
+                                                            <input [(ngModel)]="item.motivo" type="text">
                                                         </div>
                                                     </td>
                                                     <td class="text-end">
-                                                        <button class="btn btn-sm btn-light">enviar</button>
+                                                        <button  (click)="setAsistencia(item)" class="btn btn-sm btn-light">enviar</button>
                                                     </td>
                                                 </tr>
                                             </ng-container>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MateriaService } from '../../../services/materia.service';
 import { Router } from '@angular/router';
+import { response } from 'express';
 
 declare var toastr:any;
 
@@ -22,13 +23,14 @@ export class CreateMateriaComponent {
   registrarMateria(){
     this.btn_load = true;
     this._materiaService.createMateria(this.materia, this.token).subscribe(
+      response => {
+        console.log(response)
+      },
       error => {
-        console.log(error);
-        if(error.status == 200){
-          toastr.success('Materia creada correctamente')
+        console.log(error)
+        this.btn_load = false;
+        toastr.success('Materia registrada exitosamente', 'Materia Registrada');
           this._router.navigate(['/materia']);
-
-        }
       }
     )
   }

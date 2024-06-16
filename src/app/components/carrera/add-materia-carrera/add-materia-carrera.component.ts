@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MateriaService } from '../../../services/materia.service';
 import { CarreraService } from '../../../services/carrera.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+declare var toastr:any;
 @Component({
   selector: 'app-add-materia-carrera',
   templateUrl: './add-materia-carrera.component.html',
@@ -58,6 +58,7 @@ export class AddMateriaCarreraComponent {
       },
       error => {
         console.log(error);
+        toastr.success('Materias agredas exitosamente', 'Materias Agregadas');
         this.router.navigate(['/carrera/materia/'+this.id]);
       }
     );

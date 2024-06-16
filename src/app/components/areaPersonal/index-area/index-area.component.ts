@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AsistenciaService } from '../../../services/asistencia.service';
 
+declare var toastr:any;
 @Component({
   selector: 'app-index-area',
   templateUrl: './index-area.component.html',
@@ -45,12 +46,20 @@ getMateriaCercana(){
   )
 }
 
+motivo(){
+  console.log('hola ')
+}
+
 setAsistencia(item:any){
   this.asistencia.nro_registro=this.id
   this.asistencia.id_horario=item.id_horario
   this.asistencia.id_grupo=item.id_grupo
   this.asistencia.cod_materia=item.cod_materia
   this.asistencia.modalidad='Presencial'
+  if(item.motivo!=undefined){
+    this.asistencia.modalidad='Virtual'
+    this.asistencia.motivo=item.motivo
+  }
   
 
 
@@ -61,6 +70,7 @@ setAsistencia(item:any){
     },
     error=>{
       console.log(error)
+      toastr.success('Asistencia marcada con exito')
     }
   )
 }

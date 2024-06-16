@@ -34,6 +34,7 @@ import { DetalleDocentesComponent } from './components/docentes/detalle-docentes
 import { VerDocenteComponent } from './components/areaPersonal/ver-docente/ver-docente.component';
 import { LicenciasComponent } from './components/areaPersonal/licencias/licencias.component';
 import { VarMateriaDocenteComponent } from './components/docente/var-materia-docente/var-materia-docente.component';
+import { MateriaGrupoComponent } from './components/materia/materia-grupo/materia-grupo.component';
 
 
 
@@ -69,7 +70,8 @@ import { VarMateriaDocenteComponent } from './components/docente/var-materia-doc
     DetalleDocentesComponent,
     VerDocenteComponent,
     LicenciasComponent,
-    VarMateriaDocenteComponent
+    VarMateriaDocenteComponent,
+    MateriaGrupoComponent
    
 
   ],

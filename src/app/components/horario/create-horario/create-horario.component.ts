@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModuloService } from '../../../services/modulo.service';
 import { MateriaService } from '../../../services/materia.service';
-
+declare var toastr:any;
 @Component({
   selector: 'app-create-horario',
   templateUrl: './create-horario.component.html',
@@ -95,6 +95,8 @@ export class CreateHorarioComponent {
         console.log(response)
       },
       error => {
+        toastr.success('Horario creado exitosamente', 'Horario Creado')
+        
         console.log(error)
       }
     )

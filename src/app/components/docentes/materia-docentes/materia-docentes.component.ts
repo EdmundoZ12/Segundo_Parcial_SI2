@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { UsuarioService } from '../../../services/usuario.service';
 import { MateriaService } from '../../../services/materia.service';
 import { GestionService } from '../../../services/gestion.service';
-
+import { Router } from '@angular/router';
+declare var toastr:any;
 @Component({
   selector: 'app-materia-docentes',
   templateUrl: './materia-docentes.component.html',
@@ -23,6 +24,7 @@ public asignacion:any = {}
     private usuarioService: UsuarioService,
     private materiaService: MateriaService,
     private gestionService: GestionService,
+    private router: Router
   ) {}
 
   ngOnInit(){
@@ -79,7 +81,11 @@ public asignacion:any = {}
       res => {
         console.log(res);
       },
-      err => console.log(err)
+      err => {console.log(err)
+        toastr.success('Asignacion realizada con exito');
+        this.router.navigate(['/docentes']);
+      }
+      
     )
   }
 

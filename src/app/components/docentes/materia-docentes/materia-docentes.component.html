@@ -35,9 +35,9 @@
                   ></span>
                   <ol class="breadcrumb text-muted fs-6 fw-semibold">
                     <li class="breadcrumb-item pe-3 text-muted">
-                      <a [routerLink]="['/horario']" class="pe-3">Horarios</a>
+                      <a [routerLink]="['/docentes']" class="pe-3">Docentes</a>
                     </li>
-                    <li class="breadcrumb-item pe-3">Nuevo Horario</li>
+                    <li class="breadcrumb-item pe-3">Asignar materias</li>
                   </ol>
                 </h1>
                 <!--end::Title-->
@@ -67,8 +67,7 @@
                           >Añadir materia</span
                         >
                         <span class="text-muted mt-1 fw-semibold fs-7"
-                          >Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Assumenda, aspernatur.</span
+                          > Asignar materias a los docentes</span
                         >
                       </h3>
                       <div class="card-toolbar"></div>
@@ -187,7 +186,7 @@
                         class="btn btn-dark"
                         (click)="registrar()"
                       >
-                        Crear Horario
+                        Asignar materias
                       </button>
                       <button
                         *ngIf="btn_load"
