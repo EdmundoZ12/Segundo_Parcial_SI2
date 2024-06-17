@@ -19,7 +19,7 @@
               <!--begin::Page title-->
               <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">dashboard
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Panel
                     <span class="h-20px border-gray-400 border-start ms-3 mx-2"></span>
                     <ol class="breadcrumb text-muted fs-6 fw-semibold">
                       
@@ -229,11 +229,12 @@
             </div>
 
             <div class="modal-body">
-                <table>
-                    <thead>
+                <table class="table table-striped table-bordered">
+                    <thead  >
                         <tr>
                             <th>Dia</th>
                             <th>Horario</th>
+                            <th>Aula</th>
                             
                         </tr>
                     </thead>
@@ -241,7 +242,7 @@
                         <tr *ngFor="let item of horarios">
                             <td>{{item.dia}}</td>
                             <td>{{item.horaInicio}} - {{item.horaFin}}</td>
-                            
+                            <td>{{item.aula}}</td>
                             
                         </tr>
                     </tbody>

@@ -116,5 +116,7 @@ export class CreateHorarioComponent {
     }
   }
 
-  remove(idx:any){}
+  remove(idx:any){
+    this.horarios.splice(idx,1)
+  }
 }

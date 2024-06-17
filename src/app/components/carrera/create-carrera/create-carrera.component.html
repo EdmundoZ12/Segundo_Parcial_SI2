@@ -19,7 +19,7 @@
               <!--begin::Page title-->
               <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">dashboard
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Panel
                   <span class="h-20px border-gray-400 border-start ms-3 mx-2"></span>
                   <ol class="breadcrumb text-muted fs-6 fw-semibold">
                     <li class="breadcrumb-item pe-3 text-muted "><a [routerLink]="['/carrera']" class="pe-3">Carrera</a></li>
@@ -121,7 +121,7 @@
                             <div class="col-lg-12 fv-row">
                               <select class="form-select mb-2" [(ngModel)]="carrera.id_tcarrera"  >
                                 <option selected disabled value="">Seleccionar</option>
-                                <option value="{{item.id}}" *ngFor="let item of tipoCarreras">{{item.nombre}}</option>
+                                <option [value]="item.id" *ngFor="let item of tipoCarreras">{{item.nombre}}</option>
                                
                               </select>
                             </div>
@@ -146,7 +146,7 @@
                             <div class="col-lg-12 fv-row">
                               <select class="form-select mb-2" [(ngModel)]="carrera.id_modalidad"  >
                                 <option selected disabled value="">Seleccionar</option>
-                                <option value="{{item.id}}" *ngFor="let item of modalidades">{{item.nombre}}</option>
+                                <option [value]="item.id" *ngFor="let item of modalidades">{{item.nombre}}</option>
                                
                               </select>
                             </div>
