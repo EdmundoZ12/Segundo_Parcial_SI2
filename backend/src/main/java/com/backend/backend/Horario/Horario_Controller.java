@@ -2,6 +2,7 @@ package com.backend.backend.Horario;
 
 import com.backend.backend.Carrera.DTO.DTO_Carrera_Materias;
 import com.backend.backend.Horario.DTO.DTO_Horario_Create;
+import com.backend.backend.Horario.DTO.DTO_HorariosResponse;
 import com.backend.backend.Usuario.DTO.ErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,12 @@ public class Horario_Controller {
     @GetMapping("/materia/{codMateria}/grupo/{idGrupo}")
     public ResponseEntity<List<Horario>> obtenerHorariosPorMateriaYGrupo(@PathVariable String codMateria, @PathVariable Integer idGrupo) {
         List<Horario> horarios = horarioService.getHorariosPorMateriaYGrupo(codMateria, idGrupo);
+        return ResponseEntity.ok(horarios);
+    }
+
+    @GetMapping("/materia1/{codMateria}/grupo1/{idGrupo}")
+    public ResponseEntity<List<DTO_HorariosResponse>> obtenerHorariosMateriaGrupo(@PathVariable String codMateria, @PathVariable Integer idGrupo) {
+        List<DTO_HorariosResponse> horarios = horarioService.getHorariosMateriaGrupo(codMateria, idGrupo);
         return ResponseEntity.ok(horarios);
     }
 }

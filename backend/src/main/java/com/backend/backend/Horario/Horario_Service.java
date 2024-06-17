@@ -4,11 +4,13 @@ import com.backend.backend.Aula.Aula;
 import com.backend.backend.Aula.Aula_Repository;
 import com.backend.backend.Horario.DTO.DTO_Horario;
 import com.backend.backend.Horario.DTO.DTO_Horario_Create;
+import com.backend.backend.Horario.DTO.DTO_HorariosResponse;
 import com.backend.backend.Materia_Grupo.MateriaGrupo;
 import com.backend.backend.Materia_Grupo.MateriaGrupo_Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,5 +63,22 @@ public class Horario_Service {
 
     public List<Horario> getHorariosPorMateriaYGrupo(String codMateria, Integer idGrupo) {
         return horarioRepository.findByMateriaGrupo_CodMateriaAndMateriaGrupo_IdGrupo(codMateria, idGrupo);
+    }
+
+    public List<DTO_HorariosResponse> getHorariosMateriaGrupo(String codMateria, Integer idGrupo) {
+        List<Horario> horarios = horarioRepository.findByMateriaGrupo_CodMateriaAndMateriaGrupo_IdGrupo(codMateria, idGrupo);
+        List<DTO_HorariosResponse> responseList = new ArrayList<>();
+        for (Horario horario : horarios) {
+            String nombreAula =horario.getAula().getNro().toString()+"-" + horario.getAula().getModulo().getNombre();
+            DTO_HorariosResponse dtoHorariosResponse = DTO_HorariosResponse.builder()
+                    .id(horario.getId())
+                    .horaInicio(horario.getHoraInicio())
+                    .horaFin(horario.getHoraFin())
+                    .dia(horario.getDia())
+                    .aula(nombreAula)
+                    .build();
+            responseList.add(dtoHorariosResponse);
+        }
+        return responseList;
     }
 }

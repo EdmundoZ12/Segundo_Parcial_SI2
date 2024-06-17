@@ -34,6 +34,7 @@ com\backend\backend\Gest_Doc_Mate\DTO\DTO_Asignar_Gestion_Docente.class
 com\backend\backend\Carrera\DTO\DTO_Carrera_Response$DTO_Carrera_ResponseBuilder.class
 com\backend\backend\Grupo\DTO\DTO_Grupo$DTO_GrupoBuilder.class
 com\backend\backend\Grupo\Grupo_Controller.class
+com\backend\backend\Horario\DTO\DTO_HorariosResponse$DTO_HorariosResponseBuilder.class
 com\backend\backend\Auth\RegisterRequest.class
 com\backend\backend\Materia\DTO\DTO_Materia.class
 com\backend\backend\Usuario\Usuario.class
@@ -141,6 +142,7 @@ com\backend\backend\Carrera\DTO\DTO_Carrera_Response.class
 com\backend\backend\Gestion\Gestion_Controller.class
 com\backend\backend\Tipo_Carrera\TipoCarrera$TipoCarreraBuilder.class
 com\backend\backend\Gestion\DTO\DTO_Gestion$DTO_GestionBuilder.class
+com\backend\backend\Horario\DTO\DTO_HorariosResponse.class
 com\backend\backend\Asistencia\DTO\DTO_Licencia.class
 com\backend\backend\Gestion_Carrera\GestionCarreraID.class
 com\backend\backend\Gest_Doc_Mate\DTO\DTO_Materias.class
